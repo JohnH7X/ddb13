@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ddb13 — Domaine des Berges 13 | Aquablu | Sainte-Dorothée, Laval</title>
+  <meta name="description" content="Domaine des Berges 13 — Luxury waterfront residences at Aquablu, Sainte-Dorothée, Laval. Transparency-first development on the Rivière des Prairies." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            river: {
+              50:  '#f0f6ff',
+              100: '#dceeff',
+              200: '#b2d4ff',
+              300: '#7ab5ff',
+              400: '#3d8cf5',
+              500: '#2563eb',
+              600: '#1d4ed8',
+              700: '#1e40af',
+              800: '#1a3a5c',
+              900: '#0f2440',
+              950: '#091729',
+            },
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans:  ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ─── Base ────────────────────────────────────────── */
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* ─── Scroll-reveal animations ────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── Hero gradient overlay ───────────────────────── */
+    .hero-overlay {
+      background: linear-gradient(
+        135deg,
+        rgba(9, 23, 41, 0.92) 0%,
+        rgba(26, 58, 92, 0.80) 50%,
+        rgba(15, 36, 64, 0.88) 100%
+      );
+    }
+
+    /* ─── Nav blur ────────────────────────────────────── */
+    .nav-scrolled {
+      background: rgba(9, 23, 41, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    /* ─── Timeline connector ──────────────────────────── */
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      display: block;
+      width: 2px;
+      height: 40px;
+      background: linear-gradient(to bottom, #2563eb, transparent);
+      margin: 0 auto;
+    }
+
+    /* ─── Scroll arrow bounce ─────────────────────────── */
+    @keyframes bounce-down {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(8px); }
+    }
+    .bounce-arrow { animation: bounce-down 1.8s ease-in-out infinite; }
+
+    /* ─── Active nav link ─────────────────────────────── */
+    .nav-link.active {
+      color: #7ab5ff;
+      border-bottom: 1px solid #7ab5ff;
+    }
+
+    /* ─── Lightbox ────────────────────────────────────── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 92vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+      animation: lb-in 0.25s ease;
+    }
+    @keyframes lb-in {
+      from { opacity: 0; transform: scale(0.94); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    #lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      color: white;
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    #lightbox-close:hover { opacity: 1; }
+    .gallery-img { cursor: zoom-in; }
+  </style>
+</head>
+
+<body class="bg-white text-slate-800 antialiased">
+
+  <!-- ═══════════════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+
+        <!-- Brand -->
+        <a href="#home" class="flex items-center gap-3 group">
+          <span class="font-serif font-bold text-2xl text-white tracking-tight group-hover:text-river-300 transition-colors">ddb<span class="text-river-400">13</span></span>
+          <span class="hidden lg:block text-xs font-medium text-slate-400 tracking-widest uppercase mt-0.5">Domaine des Berges 13</span>
+        </a>
+
+        <!-- Desktop links -->
+        <div class="hidden md:flex items-center gap-0.5">
+          <a href="#home"       class="nav-link px-2 py-1 text-xs font-medium text-slate-300 hover:text-white transition-colors rounded-md hover:bg-white/5 whitespace-nowrap" data-section="home">Home</a>
+          <a href="#story"      class="nav-link px-2 py-1 text-xs font-medium text-slate-300 hover:text-white transition-colors rounded-md hover:bg-white/5 whitespace-nowrap" data-section="story">Our Story</a>
+          <a href="#challenges" class="nav-link px-2 py-1 text-xs font-medium text-slate-300 hover:text-white transition-colors rounded-md hover:bg-white/5 whitespace-nowrap" data-section="challenges">Photos</a>
+          <a href="#factcheck"  class="nav-link px-2 py-1 text-xs font-medium text-slate-300 hover:text-white transition-colors rounded-md hover:bg-white/5 whitespace-nowrap" data-section="factcheck">Fact Check</a>
+          <a href="#blog"       class="nav-link px-2 py-1 text-xs font-medium text-slate-300 hover:text-white transition-colors rounded-md hover:bg-white/5 whitespace-nowrap" data-section="blog">Blog</a>
+          <a href="fr.html"     class="px-2 py-1 text-xs font-semibold text-slate-300 border border-white/30 hover:border-white/60 rounded-full transition-colors whitespace-nowrap">FR</a>
+          <a href="#contact"    class="ml-2 px-4 py-2 text-xs font-semibold text-white bg-river-600 hover:bg-river-500 rounded-full transition-colors whitespace-nowrap">Contact</a>
+        </div>
+
+        <!-- Mobile hamburger -->
+        <button id="hamburger" aria-label="Open menu" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5">
+          <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+          <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+          <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-river-950/95 backdrop-blur-md border-t border-white/10">
+      <div class="px-6 py-4 flex flex-col gap-1">
+        <a href="#home"       class="mobile-nav-link py-3 text-base font-medium text-slate-200 hover:text-white border-b border-white/5">Home</a>
+        <a href="#story"      class="mobile-nav-link py-3 text-base font-medium text-slate-200 hover:text-white border-b border-white/5">Our Story</a>
+        <a href="#challenges" class="mobile-nav-link py-3 text-base font-medium text-slate-200 hover:text-white border-b border-white/5">Photos</a>
+        <a href="#factcheck"  class="mobile-nav-link py-3 text-base font-medium text-slate-200 hover:text-white border-b border-white/5">Fact Check</a>
+        <a href="#blog"       class="mobile-nav-link py-3 text-base font-medium text-slate-200 hover:text-white border-b border-white/5">Blog</a>
+        <a href="#contact"    class="mobile-nav-link py-3 text-base font-medium text-slate-200 hover:text-white border-b border-white/5">Contact</a>
+        <a href="fr.html"     class="mt-2 self-start px-3 py-1 text-sm font-semibold text-slate-300 border border-white/30 hover:border-white/60 rounded-full transition-colors">FR</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 1 — HERO
+  ══════════════════════════════════════════════════════ -->
+  <section id="home" class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+
+    <!-- Background placeholder image area -->
+    <div class="absolute inset-0 bg-gradient-to-br from-river-950 via-river-800 to-slate-900">
+      <!-- Decorative abstract river-light layers -->
+      <div class="absolute inset-0 opacity-20" style="background: radial-gradient(ellipse 80% 50% at 50% 60%, #2563eb, transparent);"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-1/3 opacity-10" style="background: linear-gradient(to top, #7ab5ff, transparent);"></div>
+      <!-- Subtle grid texture -->
+      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    </div>
+
+    <!-- Overlay for text contrast -->
+    <div class="hero-overlay absolute inset-0"></div>
+
+    <!-- Floating "Transparency First" badge -->
+    <div class="absolute top-28 right-6 md:top-32 md:right-10 z-10 reveal reveal-delay-4">
+      <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-white text-xs font-semibold tracking-widest uppercase shadow-lg">
+        <span class="w-2 h-2 rounded-full bg-river-400 animate-pulse"></span>
+        Transparency First
+      </div>
+    </div>
+
+    <!-- Hero content -->
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+
+      <!-- Pre-title label -->
+      <div class="reveal mb-6 inline-flex items-center gap-2 text-river-300 text-xs font-semibold tracking-[0.2em] uppercase">
+        <span class="block w-8 h-px bg-river-400"></span>
+        Rivière des Prairies · Sainte-Dorothée, Laval
+        <span class="block w-8 h-px bg-river-400"></span>
+      </div>
+
+      <!-- Main tagline -->
+      <h1 class="reveal reveal-delay-1 font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-6">
+        The River.<br />
+        <em class="text-river-300 not-italic">The Home. The Story.</em>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="reveal reveal-delay-2 text-lg md:text-xl text-slate-300 font-light tracking-wide mb-10 max-w-2xl mx-auto">
+        Luxury Waterfront Residences — Rivière des Prairies<br />
+        <span class="text-slate-400 text-base">Crafted with intention. Built with honesty.</span>
+      </p>
+
+      <!-- CTAs -->
+      <div class="reveal reveal-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#story" class="px-8 py-3.5 bg-river-600 hover:bg-river-500 text-white font-semibold rounded-full transition-colors shadow-lg shadow-river-900/40">
+          Discover the Vision
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll arrow -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 bounce-arrow">
+      <a href="#story" aria-label="Scroll down" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors">
+        <span class="text-xs tracking-widest uppercase font-medium">Scroll</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 2 — OUR STORY
+  ══════════════════════════════════════════════════════ -->
+  <section id="story" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-3xl mb-16 reveal">
+        <p class="text-river-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3">Our Story</p>
+        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-river-900 leading-tight mb-6">
+          Domaine des Berges 13
+        </h2>
+        <p class="text-slate-500 text-lg font-medium italic mb-4">
+          "Berges" — the French word for riverbanks. "13" — Autoroute 13, the artery that connects this peaceful corner of Sainte-Dorothée, Laval to the heart of Montréal.
+        </p>
+        <div class="w-16 h-1 bg-river-500 rounded-full"></div>
+      </div>
+
+      <!-- Narrative text -->
+      <div class="max-w-3xl mb-10 reveal">
+        <p class="text-slate-600 text-lg leading-relaxed mb-5">
+          Every great project begins with a place that speaks. For us, it was the quiet edge of the Rivière des Prairies — a stretch of riverbank that had long been overlooked, hidden just beyond the end of Rue Étienne-Lavoie. The name DDB13 was never simply a brand. It was a promise: to honour the land, the water, and the people who would one day call this home.
+        </p>
+        <p class="text-slate-600 text-lg leading-relaxed mb-5">
+          With the dawn of Aquablu, we delivered on that promise and beyond.
+        </p>
+        <p class="text-slate-600 text-lg leading-relaxed">
+          The river does not hide its current. Neither do we.
+        </p>
+      </div>
+
+      <!-- Site aerial photo -->
+      <div class="max-w-3xl mb-20 reveal">
+        <figure>
+          <img
+            src="DSC_0140.png"
+            alt="Aerial view of the Aquablu site along Autoroute 13 and the Rivière des Prairies, August 2011"
+            class="w-full rounded-2xl shadow-lg object-cover"
+          />
+          <figcaption class="mt-4 flex items-center gap-2 text-slate-400 text-sm">
+            <span class="w-6 h-px bg-slate-300"></span>
+            Aerial view of the site — August 2011. The land that would become Aquablu, before a single foundation was poured.
+          </figcaption>
+        </figure>
+        <figure class="mt-8">
+          <img
+            src="DSC_0203.png"
+            alt="The end of the road and the beginning of a dream"
+            class="w-full rounded-2xl shadow-lg object-cover"
+          />
+          <figcaption class="mt-4 flex items-center gap-2 text-slate-400 text-sm">
+            <span class="w-6 h-px bg-slate-300"></span>
+            The end of the road and the beginning of a dream.
+          </figcaption>
+        </figure>
+
+        <!-- Aquablu logo -->
+        <div class="mt-10 flex justify-center reveal">
+          <img src="download-1.jpg" alt="Aquablu logo" class="w-128 md:w-160 object-contain" style="width:32rem;" />
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="mb-20">
+        <h3 class="font-serif text-2xl md:text-3xl font-semibold text-river-900 mb-10 reveal">Our Journey</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <!-- Milestone 1 -->
+          <div class="reveal timeline-item text-center p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-full bg-river-100 text-river-700 flex items-center justify-center mx-auto mb-4 font-bold font-serif text-lg">1</div>
+            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-2">2011</div>
+            <h4 class="font-serif text-xl font-semibold text-river-900 mb-2">Land Acquired</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">The founding parcel along the Rivière des Prairies in Sainte-Dorothée is secured, setting the vision in motion.</p>
+          </div>
+
+          <!-- Milestone 2 -->
+          <div class="reveal reveal-delay-1 timeline-item text-center p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-full bg-river-100 text-river-700 flex items-center justify-center mx-auto mb-4 font-bold font-serif text-lg">2</div>
+            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-2">2012</div>
+            <h4 class="font-serif text-xl font-semibold text-river-900 mb-2">Vision Formed</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">The master plan for Aquablu — a multi-phase waterfront community — takes shape, with a commitment to transparency and architectural integrity.</p>
+          </div>
+
+          <!-- Milestone 3 -->
+          <div class="reveal reveal-delay-2 timeline-item text-center p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-4 font-bold font-serif text-lg">3</div>
+            <div class="text-emerald-600 text-xs font-semibold tracking-widest uppercase mb-2">2016</div>
+            <h4 class="font-serif text-xl font-semibold text-river-900 mb-2">Phase 1 Delivered</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">The first Aquablu building is completed and handed over to proud owners — a milestone that validated every promise we made.</p>
+          </div>
+
+          <!-- Milestone 4 -->
+          <div class="reveal reveal-delay-3 timeline-item text-center p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-4 font-bold font-serif text-lg">4</div>
+            <div class="text-emerald-600 text-xs font-semibold tracking-widest uppercase mb-2">2021</div>
+            <h4 class="font-serif text-xl font-semibold text-river-900 mb-2">Phase 2 Delivered</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">The second Aquablu building is completed and delivered. The community grows. Phase 3 approval is now our focus.</p>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 3 — OUR HISTORY IN PICTURES
+  ══════════════════════════════════════════════════════ -->
+  <section id="challenges" class="py-24 lg:py-32 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-3xl mb-16 reveal">
+        <p class="text-river-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3">Gallery</p>
+        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-river-900 leading-tight mb-6">
+          Photos
+        </h2>
+        <p class="text-slate-500 text-lg leading-relaxed">
+          From an empty riverbank to a thriving waterfront community — every image tells a chapter of the Aquablu story.
+        </p>
+        <div class="w-16 h-1 bg-river-500 rounded-full mt-6"></div>
+      </div>
+
+      <!-- Photo grid — add new <figure> blocks to extend -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+        <!-- Photo 1 -->
+        <figure class="reveal flex flex-col">
+          <div class="overflow-hidden rounded-2xl shadow-sm">
+            <img src="DSC_0140.png" alt="The land from above, 2011" class="w-full h-44 object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <figcaption class="mt-4 px-1">
+            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-1">2011 — Aerial</div>
+            <h4 class="font-serif text-lg font-semibold text-river-900 mb-1">The Land, From Above</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Aerial view of the site along Autoroute 13, with the Rivière des Prairies stretching to the north. The vacant parcel that would become Aquablu.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Photo 2 -->
+        <figure class="reveal reveal-delay-1 flex flex-col">
+          <div class="overflow-hidden rounded-2xl shadow-sm">
+            <img src="DSC_0186.png" alt="The natural riverbank, 2011" class="w-full h-44 object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <figcaption class="mt-4 px-1">
+            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-1">2011 — Riverbank</div>
+            <h4 class="font-serif text-lg font-semibold text-river-900 mb-1">A Natural Riverbank</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">The wooded edge of the property, right on the water. Undisturbed land that shaped our commitment to preserving the character of the site.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Photo 3 -->
+        <figure class="reveal reveal-delay-2 flex flex-col">
+          <div class="overflow-hidden rounded-2xl shadow-sm">
+            <img src="DSC_0203.png" alt="The end of the road and the beginning of a dream" class="w-full h-44 object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <figcaption class="mt-4 px-1">
+            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-1">2011 — Site</div>
+            <h4 class="font-serif text-lg font-semibold text-river-900 mb-1">The End of the Road and a New Beginning</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">The site at the intersection of Autoroute 13 and the neighbourhood, cleared and ready. The moment the vision became real.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Photo 4 -->
+
+        <!-- Photo 5 -->
+        <figure class="reveal reveal-delay-1 flex flex-col">
+          <div class="overflow-hidden rounded-2xl shadow-sm">
+            <img src="IMG_1841.png" alt="Architectural rendering — courtyard and amenities" class="w-full h-44 object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <figcaption class="mt-4 px-1">
+            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-1">Rendering — Amenities</div>
+            <h4 class="font-serif text-lg font-semibold text-river-900 mb-1">The Vision: Courtyard &amp; Pool</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">An early architectural rendering of the Aquablu courtyard, outdoor pool, and landscaped terraces — a vision of the life we were building toward.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Photo 6 -->
+        <figure class="reveal reveal-delay-2 flex flex-col">
+          <div class="overflow-hidden rounded-2xl shadow-sm">
+            <img src="IMG_1842.png" alt="Architectural rendering — the tower" class="w-full h-44 object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <figcaption class="mt-4 px-1">
+            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-1">Rendering — Architecture</div>
+            <h4 class="font-serif text-lg font-semibold text-river-900 mb-1">The Vision: A Landmark on the River</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">The original architectural concept for Aquablu — a tower designed to honour the river it faces, with every residence oriented toward the water.</p>
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <!-- More coming -->
+      <div class="mt-16 text-center reveal">
+        <p class="font-serif text-2xl md:text-3xl text-slate-400 italic">More coming…</p>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 4 — FACT CHECK
+  ══════════════════════════════════════════════════════ -->
+  <section id="factcheck" class="py-24 lg:py-32 bg-river-950">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-3xl mb-16 reveal">
+        <p class="text-river-400 text-xs font-semibold tracking-[0.2em] uppercase mb-3">Transparency</p>
+        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+          Fact Check
+        </h2>
+        <p class="text-slate-400 text-lg leading-relaxed">
+          Rumours travel fast. Facts travel slower. Here we set the record straight — plainly, directly, and on the record.
+        </p>
+        <div class="w-16 h-1 bg-river-500 rounded-full mt-6"></div>
+        <img src="Rumours.png" alt="Rumours" class="mt-8 object-contain opacity-90" style="width:100%; max-width:56rem;" />
+        <p class="text-slate-500 text-sm italic mt-4">Rumours travel fast. Facts travel slower.</p>
+      </div>
+
+      <!-- Fact cards -->
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- Fact 1 -->
+        <div class="reveal p-8 rounded-3xl bg-white/5 border border-white/10">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="px-3 py-1 rounded-full bg-red-500/15 border border-red-400/30 text-red-300 text-xs font-bold tracking-widest uppercase">Claim</span>
+            <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-bold tracking-widest uppercase">False ✗</span>
+          </div>
+          <h3 class="font-serif text-xl font-semibold text-white mb-3">"Phase 3 has been abandoned."</h3>
+          <p class="text-slate-400 text-base leading-relaxed">The partners own the Phase 3 land outright — it has not been sold, surrendered, or abandoned. We are actively pursuing city approval. The process is long, but the commitment is unchanged.</p>
+        </div>
+
+        <!-- Fact 2 -->
+        <div class="reveal reveal-delay-1 p-8 rounded-3xl bg-white/5 border border-white/10">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="px-3 py-1 rounded-full bg-red-500/15 border border-red-400/30 text-red-300 text-xs font-bold tracking-widest uppercase">Claim</span>
+            <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-bold tracking-widest uppercase">False ✗</span>
+          </div>
+          <h3 class="font-serif text-xl font-semibold text-white mb-3">"DDB13 has financial difficulties."</h3>
+          <p class="text-slate-400 text-base leading-relaxed">The delays are entirely administrative and regulatory — not financial. The land is owned. Phase 1 and Phase 2 were both delivered. There are no financial issues behind the Phase 3 timeline.</p>
+        </div>
+
+      </div>
+
+      <!-- Call to action -->
+      <div class="mt-14 reveal">
+        <p class="text-slate-400 text-xl md:text-2xl italic leading-relaxed max-w-2xl font-serif">
+          Heard something through the grapevine? We welcome the conversation. Reach out through the <a href="#contact" class="text-river-400 hover:text-river-300 underline underline-offset-4 transition-colors">contact section</a> and we'll address it here.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 5 — BLOG (AQUABLU COMMUNITY)
+  ══════════════════════════════════════════════════════ -->
+  <section id="blog" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-3xl mb-16 reveal">
+        <p class="text-river-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3">Blog</p>
+        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-river-900 leading-tight mb-4">
+          Aquablu Community
+        </h2>
+        <p class="text-slate-600 text-xl font-medium mb-3">A Direct Line to Aquablu Owners</p>
+        <p class="text-slate-500 text-lg leading-relaxed">
+          This is a transparent space where we address issues directly — before rumours start. Real information, plain language, no spin.
+        </p>
+        <div class="w-16 h-1 bg-river-500 rounded-full mt-6"></div>
+      </div>
+
+      <!-- Blog post cards -->
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-10">
+
+        <!-- Post 1 -->
+        <article class="reveal flex flex-col rounded-3xl border border-slate-100 bg-slate-50 overflow-hidden hover:shadow-lg transition-shadow group">
+          <!-- Post image placeholder -->
+          <div class="bg-slate-200 w-full aspect-video flex flex-col items-center justify-center text-slate-400 text-sm gap-2 flex-shrink-0">
+            <svg class="w-8 h-8 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 20.25h18M6.75 8.25a.75.75 0 101.5 0 .75.75 0 00-1.5 0z" /></svg>
+            Photo placeholder
+          </div>
+          <div class="p-8 flex flex-col flex-grow">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="px-3 py-1 rounded-full bg-river-100 text-river-700 text-xs font-semibold tracking-wide uppercase">Phase 3</span>
+              <time class="text-slate-400 text-sm">May 28, 2025</time>
+            </div>
+            <h3 class="font-serif text-2xl font-semibold text-river-900 mb-3 leading-snug group-hover:text-river-700 transition-colors">
+              Phase 3 Status: Setting the Record Straight
+            </h3>
+            <p class="text-slate-500 text-base leading-relaxed flex-grow">
+              There has been speculation circulating about the future of Phase 3. We understand why — when things go quiet, imaginations fill the silence. So let us be clear: we own the land, we have not abandoned the project, and we have not sold the parcel. What we are dealing with is a City of Montréal approval process that is taking longer than anticipated. The block is administrative, not financial, and not permanent. We are engaged with the right people and working through the proper channels. We will update you the moment there is meaningful movement. Until then, the land is ours and the vision is intact.
+            </p>
+            <div class="mt-6">
+              <button class="inline-flex items-center gap-1.5 text-sm font-semibold text-river-600 hover:text-river-500 transition-colors group/btn">
+                Read More
+                <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="reveal reveal-delay-1 flex flex-col rounded-3xl border border-slate-100 bg-slate-50 overflow-hidden hover:shadow-lg transition-shadow group">
+          <!-- Post image placeholder -->
+          <div class="bg-slate-200 w-full aspect-video flex flex-col items-center justify-center text-slate-400 text-sm gap-2 flex-shrink-0">
+            <svg class="w-8 h-8 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 20.25h18M6.75 8.25a.75.75 0 101.5 0 .75.75 0 00-1.5 0z" /></svg>
+            Photo placeholder
+          </div>
+          <div class="p-8 flex flex-col flex-grow">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="px-3 py-1 rounded-full bg-slate-200 text-slate-600 text-xs font-semibold tracking-wide uppercase">Community</span>
+              <time class="text-slate-400 text-sm">April 12, 2025</time>
+            </div>
+            <h3 class="font-serif text-2xl font-semibold text-river-900 mb-3 leading-snug group-hover:text-river-700 transition-colors">
+              Navigating City Delays Together
+            </h3>
+            <p class="text-slate-500 text-base leading-relaxed flex-grow">
+              Municipal approvals are not a simple checklist — they are a living process shaped by shifting political priorities, departmental timelines, and the interests of many stakeholders. Over the past three years, our team has spent hundreds of hours in meetings, submitting documentation, addressing queries, and building relationships with the decision-makers who hold the keys to our next phase. We do not pretend this has been easy. But we do believe that doing it right — through process, not pressure — will produce the most durable outcome for our community. We want you to know: every delay we have faced has been met with persistence, not resignation.
+            </p>
+            <div class="mt-6">
+              <button class="inline-flex items-center gap-1.5 text-sm font-semibold text-river-600 hover:text-river-500 transition-colors group/btn">
+                Read More
+                <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 6 — CONTACT
+  ══════════════════════════════════════════════════════ -->
+  <section id="contact" class="py-24 lg:py-32 bg-river-950">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Left: Contact info -->
+        <div class="reveal">
+          <p class="text-river-400 text-xs font-semibold tracking-[0.2em] uppercase mb-3">Get in Touch</p>
+          <h2 class="font-serif text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+            We Are Here<br />To Talk
+          </h2>
+          <p class="text-slate-400 text-lg leading-relaxed mb-10">
+            Questions about your unit, the development timeline, or Phase 3? Reach out directly. We respond personally — because transparency is not just a tagline.
+          </p>
+
+          <!-- Contact details -->
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-river-800/60 border border-river-700/40 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-river-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs font-semibold text-river-400 tracking-widest uppercase mb-1">Email</div>
+                <a href="mailto:jgarabedian@gmail.com" class="text-white text-lg hover:text-river-300 transition-colors">jgarabedian@gmail.com</a>
+              </div>
+            </div>
+
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-river-800/60 border border-river-700/40 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-river-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs font-semibold text-river-400 tracking-widest uppercase mb-1">Location</div>
+                <p class="text-white text-lg">Sainte-Dorothée, Laval, QC</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Contact form -->
+        <div class="reveal reveal-delay-1">
+          <form class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-10 space-y-5">
+            <div>
+              <label for="contact-name" class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
+              <input
+                id="contact-name"
+                type="text"
+                placeholder="Your name"
+                class="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-river-500 focus:border-transparent transition-all text-base"
+              />
+            </div>
+            <div>
+              <label for="contact-email" class="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
+              <input
+                id="contact-email"
+                type="email"
+                placeholder="your@email.com"
+                class="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-river-500 focus:border-transparent transition-all text-base"
+              />
+            </div>
+            <div>
+              <label for="contact-subject" class="block text-sm font-medium text-slate-300 mb-2">Subject</label>
+              <select
+                id="contact-subject"
+                class="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-xl text-slate-300 focus:outline-none focus:ring-2 focus:ring-river-500 focus:border-transparent transition-all text-base appearance-none"
+              >
+                <option value="" class="bg-river-950 text-slate-300">Select a topic</option>
+                <option value="phase3" class="bg-river-950 text-slate-300">Phase 3 — Status &amp; Timelines</option>
+                <option value="servitude" class="bg-river-950 text-slate-300">Servitude</option>
+                <option value="general" class="bg-river-950 text-slate-300">General Inquiry</option>
+                <option value="media" class="bg-river-950 text-slate-300">Media / Press</option>
+              </select>
+            </div>
+            <div>
+              <label for="contact-message" class="block text-sm font-medium text-slate-300 mb-2">Message</label>
+              <textarea
+                id="contact-message"
+                rows="5"
+                placeholder="Tell us what's on your mind..."
+                class="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-river-500 focus:border-transparent transition-all text-base resize-none"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full py-4 px-8 bg-river-600 hover:bg-river-500 text-white font-semibold rounded-xl transition-colors shadow-lg shadow-river-900/30 text-base"
+            >
+              Send Message
+            </button>
+            <p class="text-slate-500 text-xs text-center leading-relaxed">
+              We read every message and respond personally. Typically within 1–2 business days.
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════ -->
+  <footer class="bg-river-950 border-t border-white/5 py-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+        <!-- Brand mark -->
+        <div class="flex items-center gap-3">
+          <span class="font-serif font-bold text-xl text-white">ddb<span class="text-river-400">13</span></span>
+          <span class="text-slate-600 text-sm">Domaine des Berges 13</span>
+        </div>
+
+        <!-- Footer nav -->
+        <nav class="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-500">
+          <a href="#home"       class="hover:text-slate-300 transition-colors">Home</a>
+          <a href="#story"      class="hover:text-slate-300 transition-colors">Our Story</a>
+          <a href="#challenges" class="hover:text-slate-300 transition-colors">Photos</a>
+          <a href="#factcheck"  class="hover:text-slate-300 transition-colors">Fact Check</a>
+          <a href="#blog"       class="hover:text-slate-300 transition-colors">Blog</a>
+          <a href="#contact"    class="hover:text-slate-300 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Copyright -->
+        <p class="text-slate-600 text-sm text-center">
+          &copy; 2025 Domaine des Berges 13. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Lightbox overlay -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <span id="lightbox-close" aria-label="Close">&times;</span>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════════════════════════ -->
+  <script>
+    // ─── Nav scroll effect ─────────────────────────────
+    const navbar = document.getElementById('navbar');
+
+    function handleNavScroll() {
+      if (window.scrollY > 40) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', handleNavScroll, { passive: true });
+    handleNavScroll(); // run once on load
+
+
+    // ─── Mobile hamburger menu ─────────────────────────
+    const hamburger     = document.getElementById('hamburger');
+    const mobileMenu    = document.getElementById('mobile-menu');
+    const hamburgerLines = hamburger.querySelectorAll('.hamburger-line');
+    let menuOpen = false;
+
+    hamburger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+
+      if (menuOpen) {
+        mobileMenu.classList.remove('hidden');
+        // Animate to X
+        hamburgerLines[0].style.transform = 'translateY(6px) rotate(45deg)';
+        hamburgerLines[1].style.opacity   = '0';
+        hamburgerLines[2].style.transform = 'translateY(-6px) rotate(-45deg)';
+      } else {
+        mobileMenu.classList.add('hidden');
+        hamburgerLines[0].style.transform = '';
+        hamburgerLines[1].style.opacity   = '';
+        hamburgerLines[2].style.transform = '';
+      }
+    });
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.classList.add('hidden');
+        hamburgerLines[0].style.transform = '';
+        hamburgerLines[1].style.opacity   = '';
+        hamburgerLines[2].style.transform = '';
+      });
+    });
+
+
+    // ─── Smooth scroll (polyfill for older browsers) ───
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+
+    // ─── Active nav link on scroll (Intersection Observer)
+    const sections  = document.querySelectorAll('section[id]');
+    const navLinks  = document.querySelectorAll('.nav-link[data-section]');
+
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.dataset.section === id);
+          });
+        }
+      });
+    }, {
+      rootMargin: '-40% 0px -55% 0px',
+      threshold:  0,
+    });
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+
+    // ─── Scroll-reveal fade-in animations ─────────────
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target); // animate once
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -80px 0px',
+      threshold:  0.05,
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+    // ─── Contact form: prevent default + confirmation ──
+    document.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      btn.textContent = 'Message Sent — Thank You';
+      btn.disabled = true;
+      btn.classList.replace('bg-river-600', 'bg-emerald-600');
+      btn.classList.replace('hover:bg-river-500', 'hover:bg-emerald-600');
+    });
+
+
+    // ─── Lightbox ─────────────────────────────────────
+    const lightbox    = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('#challenges img').forEach(img => {
+      img.classList.add('gallery-img');
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target !== lightboxImg) closeLightbox();
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  </script>
+
+
+</body>
+</html>
