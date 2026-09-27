@@ -3,838 +3,615 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ddb13 — Domaine des Berges 13 | Aquablu | Sainte-Dorothée, Laval</title>
-  <meta name="description" content="Domaine des Berges 13 — Luxury waterfront residences at Aquablu, Sainte-Dorothée, Laval. Transparency-first development on the Rivière des Prairies." />
+  <title>Servitudes at Aquablu — Domaine des Berges 13</title>
+  <meta name="description" content="Information, plans, and approved technical documents concerning the servitudes at Aquablu in Sainte-Dorothée, Laval." />
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            river: {
-              50:  '#f0f6ff',
-              100: '#dceeff',
-              200: '#b2d4ff',
-              300: '#7ab5ff',
-              400: '#3d8cf5',
-              500: '#2563eb',
-              600: '#1d4ed8',
-              700: '#1e40af',
-              800: '#1a3a5c',
-              900: '#0f2440',
-              950: '#091729',
-            },
-          },
-          fontFamily: {
-            serif: ['Playfair Display', 'Georgia', 'serif'],
-            sans:  ['Inter', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* ─── Base ────────────────────────────────────────── */
-    html { font-family: 'Inter', system-ui, sans-serif; }
-    h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; }
+    /* ============ WARM TOKENS ============ */
+    :root{
+      --paper:#f7f3ea;      /* warm cream ground */
+      --paper-2:#f1e9da;    /* warmer band */
+      --surface:#fffdf8;    /* warm white cards */
+      --ink:#2b2620;        /* warm near-black */
+      --slate:#6a6055;      /* warm taupe text */
+      --slate-2:#9c9082;    /* soft warm meta */
+      --line:#e6dccb;       /* warm hairline */
+      --line-2:#d8cbb4;     /* stronger warm hairline */
+      --water:#2f7d84;      /* softened Aquablu teal */
+      --water-bright:#3a949c;
+      --water-deep:#173f44; /* deep warm teal, dark sections */
+      --water-deep-2:#102d31;
+      --clay:#c07a4f;       /* warm terracotta accent */
+      --clay-soft:#e9d8c6;
+      --leaf:#5f7a4e;       /* warm green — delivered */
+      --paper-on-dark:#f4ede0;
+      --slate-on-dark:#b6ab98;
+      --line-on-dark:rgba(244,237,224,.18);
+      --radius:18px;
+      --radius-sm:12px;
+      --shadow:0 3px 24px rgba(43,38,32,.07);
+      --shadow-lg:0 12px 44px rgba(43,38,32,.12);
+      --maxw:1120px;
+    }
+    *{box-sizing:border-box;}
+    html{ -webkit-text-size-adjust:100%; }
+    body{
+      margin:0; background:var(--paper); color:var(--ink);
+      font-family:'Newsreader',Georgia,serif; font-size:18px; line-height:1.72;
+      font-optical-sizing:auto; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    ::selection{ background:var(--clay); color:#fff; }
 
-    /* ─── Scroll-reveal animations ────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
+    h1,h2,h3,h4{ font-family:'Newsreader',Georgia,serif; font-weight:500; margin:0; }
+    .ui{ font-family:'Jost',system-ui,sans-serif; }
+    p{ margin:0 0 1.2rem; }
+    a{ color:var(--water); text-underline-offset:3px; }
 
-    /* ─── Hero gradient overlay ───────────────────────── */
-    .hero-overlay {
-      background: linear-gradient(
-        135deg,
-        rgba(9, 23, 41, 0.92) 0%,
-        rgba(26, 58, 92, 0.80) 50%,
-        rgba(15, 36, 64, 0.88) 100%
-      );
+    .eyebrow{
+      font-family:'Jost',sans-serif; font-size:.78rem; font-weight:500;
+      letter-spacing:.16em; text-transform:uppercase; color:var(--clay);
+      display:inline-flex; align-items:center; gap:.7rem; margin:0 0 1.3rem;
     }
+    .eyebrow::before{ content:""; width:24px; height:2px; background:var(--clay); border-radius:2px; }
+    .on-dark .eyebrow{ color:#e0b48f; }
+    .on-dark .eyebrow::before{ background:#e0b48f; }
 
-    /* ─── Nav blur ────────────────────────────────────── */
-    .nav-scrolled {
-      background: rgba(9, 23, 41, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
-    }
+    h1{ font-size:clamp(2.7rem,6vw,4.6rem); line-height:1.03; letter-spacing:-.015em; }
+    h2{ font-size:clamp(1.9rem,3.6vw,2.9rem); line-height:1.1; letter-spacing:-.01em; }
+    h3{ font-size:1.3rem; line-height:1.3; font-weight:500; }
+    .lead{ font-size:clamp(1.18rem,1.9vw,1.4rem); line-height:1.6; color:var(--slate); }
 
-    /* ─── Timeline connector ──────────────────────────── */
-    .timeline-item:not(:last-child)::after {
-      content: '';
-      display: block;
-      width: 2px;
-      height: 40px;
-      background: linear-gradient(to bottom, #2563eb, transparent);
-      margin: 0 auto;
-    }
+    /* ============ LAYOUT ============ */
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 clamp(1.25rem,4vw,2.5rem); }
+    .narrow{ max-width:720px; }
+    section{ padding:clamp(4rem,8vw,7rem) 0; }
+    .band{ background:var(--paper-2); }
+    .subhead{ font-family:'Jost',sans-serif; font-size:.8rem; font-weight:500; letter-spacing:.14em;
+      text-transform:uppercase; color:var(--slate-2); margin:0 0 1rem; }
 
-    /* ─── Scroll arrow bounce ─────────────────────────── */
-    @keyframes bounce-down {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(8px); }
-    }
-    .bounce-arrow { animation: bounce-down 1.8s ease-in-out infinite; }
+    /* ============ NAV ============ */
+    #nav{ position:sticky; top:0; z-index:50; background:rgba(247,243,234,.85);
+      backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+      border-bottom:1px solid transparent; transition:border-color .3s, background .3s; }
+    #nav.solid{ border-bottom-color:var(--line); background:rgba(247,243,234,.95); }
+    .navrow{ display:flex; align-items:center; justify-content:space-between; height:68px; }
+    .brand{ font-family:'Newsreader',serif; font-weight:500; font-size:1.25rem;
+      letter-spacing:-.01em; color:var(--ink); text-decoration:none; white-space:nowrap; flex:none; }
+    .brand .n{ color:var(--water); font-style:italic; }
+    .navlinks{ display:flex; align-items:center; gap:2rem; flex-wrap:nowrap; }
+    .navlink{ font-family:'Jost',sans-serif; font-size:.92rem; font-weight:400; color:var(--slate);
+      text-decoration:none; position:relative; padding:.2rem 0; transition:color .2s; white-space:nowrap; }
+    .navlink:hover{ color:var(--ink); }
+    .navlink.active{ color:var(--ink); }
+    .navlink.active::after{ content:""; position:absolute; left:0; right:0; bottom:-4px; height:2px;
+      background:var(--clay); border-radius:2px; }
+    .lang{ font-family:'Jost',sans-serif; font-size:.8rem; letter-spacing:.06em; color:var(--slate);
+      text-decoration:none; border:1px solid var(--line-2); padding:.32rem .6rem; border-radius:999px;
+      transition:border-color .2s,color .2s; }
+    .lang:hover{ border-color:var(--water); color:var(--water); }
+    .btn{ font-family:'Jost',sans-serif; font-size:.9rem; font-weight:500; text-decoration:none;
+      display:inline-flex; align-items:center; gap:.5rem; padding:.7rem 1.4rem; border-radius:999px;
+      transition:background .2s,color .2s,border-color .2s,transform .15s; cursor:pointer; border:0; }
+    .btn:active{ transform:translateY(1px); }
+    .btn-primary{ background:var(--water); color:#fff; }
+    .btn-primary:hover{ background:var(--water-bright); }
+    .btn-ghost{ background:transparent; color:var(--ink); border:1px solid var(--line-2); }
+    .btn-ghost:hover{ border-color:var(--water); color:var(--water); }
+    .on-dark .btn-ghost{ color:var(--paper-on-dark); border-color:var(--line-on-dark); }
+    .on-dark .btn-ghost:hover{ border-color:#e0b48f; color:#fff; }
+    .btn-light{ background:var(--paper-on-dark); color:var(--water-deep); }
+    .btn-light:hover{ background:#fff; }
+    .burger{ display:none; flex-direction:column; gap:5px; width:42px; height:42px; align-items:center;
+      justify-content:center; background:none; border:0; cursor:pointer; }
+    .burger span{ width:22px; height:2px; background:var(--ink); display:block; border-radius:2px; }
+    @media(max-width:860px){ .navlinks{ display:none; } .burger{ display:flex; } }
+    #mobile{ display:none; border-bottom:1px solid var(--line); background:var(--paper); }
+    #mobile.open{ display:block; }
+    #mobile a{ display:block; padding:.8rem 0; font-family:'Jost',sans-serif; font-weight:400;
+      font-size:1rem; color:var(--ink); text-decoration:none; border-top:1px solid var(--line); }
+    #mobile a:first-child{ border-top:0; }
 
-    /* ─── Active nav link ─────────────────────────────── */
-    .nav-link.active {
-      color: #7ab5ff;
-      border-bottom: 1px solid #7ab5ff;
-    }
+    /* ============ HERO / LETTERHEAD ============ */
+    .hero{ padding:clamp(3rem,6vw,5rem) 0 clamp(3.5rem,6vw,5.5rem); }
+    .hero-grid{ display:grid; grid-template-columns:1.02fr .98fr; gap:clamp(2rem,5vw,4.5rem); align-items:center; }
+    @media(max-width:900px){ .hero-grid{ grid-template-columns:1fr; gap:2.5rem; } }
+    .hero h1{ margin:.3rem 0 1.5rem; }
+    .hero h1 em{ font-style:italic; color:var(--water); }
+    .hero-actions{ display:flex; flex-wrap:wrap; gap:.9rem; margin-top:2.2rem; }
+    .hero-meta{ margin-top:2.4rem; padding-top:1.6rem; border-top:1px solid var(--line);
+      font-family:'Jost',sans-serif; font-size:.85rem; letter-spacing:.04em; color:var(--slate-2);
+      display:flex; flex-wrap:wrap; gap:.4rem 1.2rem; }
+    .hero-photo{ position:relative; }
+    .hero-photo img{ width:100%; aspect-ratio:5/4; object-fit:cover; border-radius:var(--radius);
+      box-shadow:var(--shadow-lg); display:block; }
+    .hero-photo figcaption{ font-family:'Jost',sans-serif; font-size:.8rem; color:var(--slate-2);
+      margin-top:.9rem; text-align:center; }
 
-    /* ─── Lightbox ────────────────────────────────────── */
-    #lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      background: rgba(0,0,0,0.92);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      align-items: center;
-      justify-content: center;
-      cursor: zoom-out;
-    }
-    #lightbox.open { display: flex; }
-    #lightbox img {
-      max-width: 92vw;
-      max-height: 88vh;
-      object-fit: contain;
-      border-radius: 12px;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
-      animation: lb-in 0.25s ease;
-    }
-    @keyframes lb-in {
-      from { opacity: 0; transform: scale(0.94); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-    #lightbox-close {
-      position: fixed;
-      top: 20px;
-      right: 24px;
-      color: white;
-      font-size: 2rem;
-      line-height: 1;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-    }
-    #lightbox-close:hover { opacity: 1; }
-    .gallery-img { cursor: zoom-in; }
+    /* ============ LETTER ============ */
+    .letter-body{ }
+    .letter-body p{ font-size:1.2rem; line-height:1.75; color:var(--ink); }
+    .salutation{ font-size:1.5rem; font-style:italic; color:var(--water); margin-bottom:1.4rem; }
+    .sign{ display:flex; align-items:center; gap:1rem; margin-top:2rem; }
+    .sign .swash{ width:46px; height:2px; background:var(--clay); border-radius:2px; }
+    .sign span{ font-style:italic; font-size:1.15rem; color:var(--ink); }
+    .letter-body .letter-title{ font-size:clamp(1.8rem,3.4vw,2.5rem); line-height:1.12; letter-spacing:-.01em; margin:.3rem 0 1.8rem; }
+    .letter-body .lsub{ font-size:1.42rem; font-weight:600; color:var(--ink); line-height:1.25; margin:2.8rem 0 .8rem; }
+    .letter-body .emph{ font-style:italic; font-size:clamp(1.3rem,2.2vw,1.6rem); line-height:1.35; color:var(--water); margin:1.7rem 0; }
+
+    /* ============ ORIGINS ============ */
+    .origins{ margin-top:clamp(3rem,6vw,4.5rem); }
+    .name-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin:1.8rem 0; }
+    @media(max-width:640px){ .name-grid{ grid-template-columns:1fr; } }
+    .name-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+      padding:1.8rem; box-shadow:var(--shadow); }
+    .name-card .word{ font-family:'Newsreader',serif; font-style:italic; font-size:2rem; color:var(--water);
+      line-height:1; margin-bottom:.7rem; }
+    .name-card p{ margin:0; color:var(--slate); font-size:1.02rem; line-height:1.6; }
+
+    /* ============ TIMELINE ============ */
+    .timeline{ margin-top:clamp(3rem,6vw,4.5rem); position:relative; padding-left:1.6rem; }
+    .timeline::before{ content:""; position:absolute; left:5px; top:.6rem; bottom:.6rem; width:2px;
+      background:linear-gradient(var(--line-2),var(--line)); border-radius:2px; }
+    .tl-item{ position:relative; padding:0 0 2rem 1.6rem; }
+    .tl-item:last-child{ padding-bottom:0; }
+    .tl-item::before{ content:""; position:absolute; left:-1.6rem; top:.35rem; width:14px; height:14px;
+      border-radius:50%; background:var(--surface); border:2px solid var(--line-2); }
+    .tl-item.done::before{ background:var(--leaf); border-color:var(--leaf); }
+    .tl-item.now::before{ background:var(--clay); border-color:var(--clay); box-shadow:0 0 0 5px rgba(192,122,79,.16); }
+    .tl-year{ font-family:'Jost',sans-serif; font-size:.82rem; font-weight:500; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--slate-2); margin-bottom:.25rem; }
+    .tl-item h3{ margin-bottom:.35rem; }
+    .tl-item p{ margin:0; color:var(--slate); font-size:1.02rem; }
+
+    /* ============ PHASE / STATUS ============ */
+    .pill{ font-family:'Jost',sans-serif; font-size:.76rem; font-weight:500; letter-spacing:.04em;
+      display:inline-flex; align-items:center; gap:.45rem; padding:.35rem .8rem; border-radius:999px; }
+    .pill .dot{ width:7px; height:7px; border-radius:50%; background:currentColor; }
+    .pill.done{ color:var(--leaf); background:rgba(95,122,78,.12); }
+    .pill.wait{ color:var(--clay); background:rgba(192,122,79,.14); }
+    .board{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.3rem; margin-top:2.5rem; }
+    @media(max-width:760px){ .board{ grid-template-columns:1fr; } }
+    .phase{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+      padding:1.8rem; box-shadow:var(--shadow); }
+    .phase.active{ border-color:var(--clay-soft); box-shadow:0 3px 24px rgba(192,122,79,.16); }
+    .phase .p-no{ font-family:'Jost',sans-serif; font-size:.8rem; font-weight:500; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--slate-2); margin-bottom:.9rem; }
+    .phase h3{ margin-bottom:.5rem; }
+    .phase p{ color:var(--slate); font-size:1rem; margin:0 0 1.2rem; }
+    .phase a.more{ font-family:'Jost',sans-serif; font-size:.9rem; font-weight:500; color:var(--water);
+      text-decoration:none; display:inline-block; margin-top:.4rem; }
+
+    /* ============ RUMOURS ============ */
+    .rumours{ display:grid; grid-template-columns:1fr 1fr; gap:1.3rem; margin-top:1.6rem; }
+    @media(max-width:760px){ .rumours{ grid-template-columns:1fr; } }
+    .rumour{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+      padding:1.8rem; box-shadow:var(--shadow); }
+    .rumour .heard{ font-family:'Jost',sans-serif; font-size:.76rem; font-weight:500; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--slate-2); margin-bottom:.6rem; }
+    .rumour .said{ font-size:1.3rem; font-style:italic; line-height:1.35; color:var(--ink); margin-bottom:1.1rem; }
+    .rumour .verdict{ font-family:'Jost',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:.04em;
+      color:var(--clay); display:inline-flex; align-items:center; gap:.45rem; margin-bottom:.8rem; }
+    .rumour .verdict .x{ display:inline-flex; width:18px; height:18px; border-radius:50%;
+      background:rgba(192,122,79,.16); align-items:center; justify-content:center; font-size:.7rem; }
+    .rumour p{ margin:0; color:var(--slate); font-size:1.02rem; line-height:1.6; }
+    .rumour-note{ margin-top:2rem; font-style:italic; color:var(--slate); font-size:1.12rem; max-width:640px; }
+
+    /* ============ PHOTOS ============ */
+    .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+    @media(max-width:820px){ .gallery{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:520px){ .gallery{ grid-template-columns:1fr; } }
+    .shot{ margin:0; }
+    .shot img{ width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:var(--radius-sm);
+      display:block; cursor:zoom-in; box-shadow:var(--shadow); transition:transform .4s, box-shadow .3s; }
+    .shot:hover img{ transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+    .shot figcaption{ font-family:'Jost',sans-serif; font-size:.85rem; color:var(--slate-2); margin-top:.7rem; }
+
+    /* ============ SERVITUDES ============ */
+    .servitude-question{ max-width:920px; }
+    .servitude-points{ display:grid; grid-template-columns:1fr 1fr; gap:1.3rem; margin-top:2.2rem; }
+    @media(max-width:760px){ .servitude-points{ grid-template-columns:1fr; } }
+    .servitude-point{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:clamp(1.4rem,3vw,1.9rem); box-shadow:var(--shadow); }
+    .servitude-point .number{ font-family:'Jost',sans-serif; color:var(--water); font-size:.78rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; margin-bottom:.55rem; }
+    .servitude-point h3{ font-size:1.45rem; margin-bottom:.8rem; }
+    .servitude-point p{ color:var(--slate); font-size:1rem; line-height:1.62; }
+    .servitude-point p:last-child{ margin-bottom:0; }
+    .benefits{ margin-top:1.3rem; padding:clamp(1.5rem,3vw,2rem); background:var(--water-deep); color:var(--paper-on-dark); border-radius:var(--radius); }
+    .benefits > .subhead{ color:#e0b48f; margin-bottom:1rem; }
+    .benefit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.4rem,4vw,3rem); }
+    .benefit + .benefit{ border-left:1px solid var(--line-on-dark); padding-left:clamp(1.4rem,4vw,3rem); }
+    .benefit h3{ color:#fff; font-size:1.3rem; margin-bottom:.55rem; }
+    .benefit p{ color:var(--slate-on-dark); font-size:1rem; line-height:1.62; margin:0; }
+    @media(max-width:700px){ .benefit-grid{ grid-template-columns:1fr; } .benefit + .benefit{ border-left:0; border-top:1px solid var(--line-on-dark); padding-left:0; padding-top:1.4rem; } }
+    .plans-summary{ margin-top:1.3rem; padding:1.5rem 0 0; border-top:1px solid var(--line-2); }
+    .plans-summary h3{ margin-bottom:.65rem; }
+    .plans-summary ul{ margin:.6rem 0 1rem; padding-left:1.25rem; color:var(--slate); }
+    .plans-summary li{ margin:.35rem 0; }
+    .servitude-plan{ margin:2.2rem 0 0; }
+    .servitude-plan img{ width:100%; display:block; border-radius:var(--radius); box-shadow:var(--shadow-lg); cursor:zoom-in; }
+    .servitude-plan figcaption{ font-family:'Jost',sans-serif; color:var(--slate-2); font-size:.86rem; margin-top:.8rem; }
+    .servitude-plan-actions{ display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1rem; }
+    .qa-section{ margin-top:clamp(3rem,6vw,4.5rem); padding-top:clamp(2rem,4vw,3rem); border-top:1px solid var(--line-2); }
+    .qa-section > h3{ font-size:clamp(1.7rem,3vw,2.35rem); margin-bottom:1.5rem; }
+    .qa-list{ border-bottom:1px solid var(--line-2); }
+    .qa-item{ display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr); gap:clamp(1.25rem,4vw,3rem); padding:1.5rem 0; border-top:1px solid var(--line-2); }
+    .qa-question,.qa-answer{ margin:0; }
+    .qa-question{ font-size:1.18rem; line-height:1.45; color:var(--ink); }
+    .qa-answer{ color:var(--slate); font-size:1rem; line-height:1.65; }
+    .qa-label{ display:block; font-family:'Jost',sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--water); margin-bottom:.45rem; }
+    @media(max-width:700px){ .qa-item{ grid-template-columns:1fr; gap:.65rem; } }
+    .approved-documents{ margin-top:2.8rem; }
+    .approved-documents > h3{ font-size:1.55rem; margin-bottom:1.2rem; }
+    .approved-document-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.3rem; }
+    @media(max-width:680px){ .approved-document-grid{ grid-template-columns:1fr; } }
+    .approved-document{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
+    .approved-document-preview{ background:#fff; padding:1rem; border-bottom:1px solid var(--line); }
+    .approved-document-preview img{ width:100%; height:360px; object-fit:contain; display:block; cursor:zoom-in; }
+    @media(max-width:520px){ .approved-document-preview img{ height:300px; } }
+    .approved-document-body{ padding:1.4rem; }
+    .approved-document-body .subhead{ margin-bottom:.55rem; }
+    .approved-document-body h4{ font-size:1.3rem; margin-bottom:.55rem; }
+    .approved-document-body p{ color:var(--slate); font-size:.98rem; line-height:1.55; margin-bottom:1rem; }
+    .approved-document-actions{ display:flex; flex-wrap:wrap; gap:.7rem; }
+    .servitude-history{ margin-top:clamp(4rem,8vw,6rem); padding-top:clamp(3rem,6vw,4.5rem); border-top:1px solid var(--line-2); }
+    .servitude-intro{ max-width:760px; }
+    .servitude-layout{ display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(2rem,5vw,4rem); margin-top:2.8rem; align-items:start; }
+    @media(max-width:820px){ .servitude-layout{ grid-template-columns:1fr; } }
+    .servitude-timeline{ position:relative; padding-left:1.6rem; }
+    .servitude-timeline::before{ content:""; position:absolute; left:5px; top:.5rem; bottom:.5rem; width:2px; background:var(--line-2); }
+    .servitude-event{ position:relative; padding:0 0 1.8rem 1.5rem; }
+    .servitude-event:last-child{ padding-bottom:0; }
+    .servitude-event::before{ content:""; position:absolute; left:-1.6rem; top:.38rem; width:14px; height:14px; border-radius:50%; background:var(--paper-2); border:2px solid var(--water); }
+    .servitude-event .date{ font-family:'Jost',sans-serif; color:var(--water); font-size:.78rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
+    .servitude-event h3{ margin:.25rem 0 .35rem; }
+    .servitude-event p{ margin:0; color:var(--slate); font-size:1rem; line-height:1.6; }
+    .servitude-aside{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:clamp(1.5rem,3vw,2rem); box-shadow:var(--shadow); }
+    .servitude-aside h3{ margin-bottom:.8rem; }
+    .servitude-aside p{ color:var(--slate); font-size:1rem; line-height:1.6; }
+    .document-actions{ display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.5rem; }
+
+    /* ============ CONTACT (deep warm) ============ */
+    .dark{ background:var(--water-deep); color:var(--paper-on-dark); }
+    .dark h2{ color:#fff; }
+    .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,4rem); align-items:start; }
+    @media(max-width:820px){ .contact-grid{ grid-template-columns:1fr; } }
+    .contact-lead{ color:var(--slate-on-dark); font-size:1.15rem; margin-top:1.1rem; max-width:38ch; }
+    .contact-meta{ margin-top:2rem; display:grid; gap:1.4rem; }
+    .contact-meta .k{ font-family:'Jost',sans-serif; font-size:.76rem; letter-spacing:.1em;
+      text-transform:uppercase; color:#e0b48f; margin-bottom:.35rem; }
+    .contact-meta .v{ font-size:1.2rem; color:#fff; text-decoration:none; }
+    a.v:hover{ color:#e0b48f; }
+    form.note-form{ background:rgba(255,255,255,.04); border:1px solid var(--line-on-dark);
+      border-radius:var(--radius); padding:clamp(1.6rem,3vw,2.2rem); }
+    .field{ margin-bottom:1.2rem; }
+    .field label{ display:block; font-family:'Jost',sans-serif; font-size:.8rem; letter-spacing:.04em;
+      color:var(--slate-on-dark); margin-bottom:.5rem; }
+    .field input,.field select,.field textarea{ width:100%; font-family:'Newsreader',serif; font-size:1.05rem;
+      color:#fff; background:rgba(255,255,255,.05); border:1px solid var(--line-on-dark); border-radius:var(--radius-sm);
+      padding:.8rem .9rem; transition:border-color .2s; }
+    .field input::placeholder,.field textarea::placeholder{ color:rgba(182,171,152,.55); }
+    .field input:focus,.field select:focus,.field textarea:focus{ outline:none; border-color:#e0b48f; }
+    .field select{ appearance:none; color:var(--slate-on-dark); font-family:'Jost',sans-serif; font-size:.98rem; }
+    .field select option{ color:#111; }
+    .field textarea{ resize:vertical; min-height:130px; }
+    .form-note{ font-family:'Jost',sans-serif; font-size:.8rem; color:var(--slate-on-dark); text-align:center; margin:1rem 0 0; }
+
+    /* ============ FOOTER (matches the header: warm & light) ============ */
+    footer{ background:var(--paper-2); color:var(--slate); border-top:1px solid var(--line); padding:clamp(3rem,5vw,4rem) 0; }
+    .foot{ display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:2rem; }
+    .foot .brand{ color:var(--ink); font-size:1.35rem; }
+    .foot p{ font-family:'Jost',sans-serif; font-size:.9rem; color:var(--slate); max-width:40ch; margin:.9rem 0 0; }
+    .foot-nav{ display:flex; flex-wrap:wrap; gap:.6rem 1.6rem; }
+    .foot-nav a{ font-family:'Jost',sans-serif; font-size:.92rem; color:var(--slate); text-decoration:none; }
+    .foot-nav a:hover{ color:var(--water); }
+    .foot-meta{ margin-top:2.4rem; padding-top:1.4rem; border-top:1px solid var(--line);
+      font-family:'Jost',sans-serif; font-size:.82rem; color:var(--slate-2);
+      display:flex; flex-wrap:wrap; justify-content:space-between; gap:.6rem; }
+
+    /* ============ REVEAL / A11Y ============ */
+    .reveal{ opacity:0; transform:translateY(20px); transition:opacity .8s ease, transform .8s ease; }
+    .reveal.in{ opacity:1; transform:none; }
+    .r-1{ transition-delay:.08s; } .r-2{ transition-delay:.16s; } .r-3{ transition-delay:.24s; }
+    @media(prefers-reduced-motion:reduce){ .reveal{ opacity:1!important; transform:none!important; transition:none; } html{ scroll-behavior:auto; } }
+    a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+      outline:2px solid var(--clay); outline-offset:2px; border-radius:3px; }
+    .dark a:focus-visible,.dark button:focus-visible,.dark input:focus-visible,.dark select:focus-visible,.dark textarea:focus-visible{ outline-color:#e0b48f; }
+    .skip{ position:absolute; left:-9999px; top:0; background:var(--water); color:#fff; padding:.6rem 1rem; z-index:100; border-radius:0 0 var(--radius-sm) 0; }
+    .skip:focus{ left:0; }
+
+    /* ============ LIGHTBOX ============ */
+    #lb{ display:none; position:fixed; inset:0; z-index:200; background:rgba(23,26,25,.94);
+      align-items:center; justify-content:center; cursor:zoom-out; padding:4vw; }
+    #lb.on{ display:flex; }
+    #lb img{ max-width:92vw; max-height:86vh; object-fit:contain; border-radius:var(--radius-sm); box-shadow:var(--shadow-lg); }
+    #lb-cap{ position:fixed; bottom:22px; left:0; right:0; text-align:center; font-family:'Jost',sans-serif;
+      font-size:.85rem; color:var(--slate-on-dark); }
+    #lb-x{ position:fixed; top:16px; right:22px; width:44px; height:44px; border:1px solid var(--line-on-dark);
+      border-radius:50%; color:#fff; background:none; font-size:1.4rem; cursor:pointer; }
+    #lb-x:hover{ background:rgba(255,255,255,.1); }
   </style>
 </head>
 
-<body class="bg-white text-slate-800 antialiased">
+<body id="top">
+  <a href="#servitudes" class="skip">Skip to servitudes</a>
 
-  <!-- ═══════════════════════════════════════════════════
-       NAVIGATION
-  ══════════════════════════════════════════════════════ -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 md:h-20">
-
-        <!-- Brand -->
-        <a href="#home" class="flex items-center gap-3 group">
-          <span class="font-serif font-bold text-2xl text-white tracking-tight group-hover:text-river-300 transition-colors">ddb<span class="text-river-400">13</span></span>
-          <span class="hidden lg:block text-xs font-medium text-slate-400 tracking-widest uppercase mt-0.5">Domaine des Berges 13</span>
-        </a>
-
-        <!-- Desktop links -->
-        <div class="hidden md:flex items-center gap-0.5">
-          <a href="#home"       class="nav-link px-2 py-1 text-xs font-medium text-slate-300 hover:text-white transition-colors rounded-md hover:bg-white/5 whitespace-nowrap" data-section="home">Home</a>
-          <a href="#story"      class="nav-link px-2 py-1 text-xs font-medium text-slate-300 hover:text-white transition-colors rounded-md hover:bg-white/5 whitespace-nowrap" data-section="story">Our Story</a>
-          <a href="#challenges" class="nav-link px-2 py-1 text-xs font-medium text-slate-300 hover:text-white transition-colors rounded-md hover:bg-white/5 whitespace-nowrap" data-section="challenges">Photos</a>
-          <a href="#factcheck"  class="nav-link px-2 py-1 text-xs font-medium text-slate-300 hover:text-white transition-colors rounded-md hover:bg-white/5 whitespace-nowrap" data-section="factcheck">Fact Check</a>
-          <a href="#blog"       class="nav-link px-2 py-1 text-xs font-medium text-slate-300 hover:text-white transition-colors rounded-md hover:bg-white/5 whitespace-nowrap" data-section="blog">Blog</a>
-          <a href="fr.html"     class="px-2 py-1 text-xs font-semibold text-slate-300 border border-white/30 hover:border-white/60 rounded-full transition-colors whitespace-nowrap">FR</a>
-          <a href="#contact"    class="ml-2 px-4 py-2 text-xs font-semibold text-white bg-river-600 hover:bg-river-500 rounded-full transition-colors whitespace-nowrap">Contact</a>
-        </div>
-
-        <!-- Mobile hamburger -->
-        <button id="hamburger" aria-label="Open menu" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5">
-          <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
-          <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
-          <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
-        </button>
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="wrap navrow">
+      <a href="#top" class="brand">Domaine des Berges&nbsp;<span class="n">13</span></a>
+      <div class="navlinks">
+        <a href="#servitudes" class="navlink" data-section="servitudes">Servitudes</a>
+        <a href="fr.html" class="lang">FR</a>
+        <a href="#contact" class="btn btn-primary">Contact</a>
       </div>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
-
-    <!-- Mobile menu drawer -->
-    <div id="mobile-menu" class="hidden md:hidden bg-river-950/95 backdrop-blur-md border-t border-white/10">
-      <div class="px-6 py-4 flex flex-col gap-1">
-        <a href="#home"       class="mobile-nav-link py-3 text-base font-medium text-slate-200 hover:text-white border-b border-white/5">Home</a>
-        <a href="#story"      class="mobile-nav-link py-3 text-base font-medium text-slate-200 hover:text-white border-b border-white/5">Our Story</a>
-        <a href="#challenges" class="mobile-nav-link py-3 text-base font-medium text-slate-200 hover:text-white border-b border-white/5">Photos</a>
-        <a href="#factcheck"  class="mobile-nav-link py-3 text-base font-medium text-slate-200 hover:text-white border-b border-white/5">Fact Check</a>
-        <a href="#blog"       class="mobile-nav-link py-3 text-base font-medium text-slate-200 hover:text-white border-b border-white/5">Blog</a>
-        <a href="#contact"    class="mobile-nav-link py-3 text-base font-medium text-slate-200 hover:text-white border-b border-white/5">Contact</a>
-        <a href="fr.html"     class="mt-2 self-start px-3 py-1 text-sm font-semibold text-slate-300 border border-white/30 hover:border-white/60 rounded-full transition-colors">FR</a>
-      </div>
+    <div id="mobile" class="wrap">
+      <a href="#servitudes" class="m-link">Servitudes</a>
+      <a href="#contact"  class="m-link">Contact</a>
+      <a href="fr.html">Version française →</a>
     </div>
   </nav>
 
+  <!-- SERVITUDES -->
+  <section id="servitudes" class="band">
+    <div class="wrap">
+      <div class="servitude-question">
+        <p class="eyebrow reveal">Servitudes</p>
+        <h1 class="reveal r-1">The Servitude Question — September 2026</h1>
+        <p class="lead reveal r-2" style="margin-top:1rem;">Tonight, you will be asked to approve <strong>two servitudes</strong> relating to the project.</p>
 
-  <!-- ═══════════════════════════════════════════════════
-       SECTION 1 — HERO
-  ══════════════════════════════════════════════════════ -->
-  <section id="home" class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+        <div class="servitude-points">
+          <article class="servitude-point reveal">
+            <div class="number">01</div>
+            <h3>Infrastructure Servitude</h3>
+            <p>Under the current arrangement, the <strong>co-owners remain responsible for the costs associated with the repair and maintenance of the aqueduct, sewer system, and drainage infrastructure located beneath the street</strong>, including in the event of a malfunction or pipe failure.</p>
+            <p>The proposed infrastructure servitude would <strong>transfer responsibility for the repair and maintenance of this infrastructure to the City of Laval</strong>, thereby removing this potential financial liability from the co-owners.</p>
+          </article>
 
-    <!-- Background placeholder image area -->
-    <div class="absolute inset-0 bg-gradient-to-br from-river-950 via-river-800 to-slate-900">
-      <!-- Decorative abstract river-light layers -->
-      <div class="absolute inset-0 opacity-20" style="background: radial-gradient(ellipse 80% 50% at 50% 60%, #2563eb, transparent);"></div>
-      <div class="absolute bottom-0 left-0 right-0 h-1/3 opacity-10" style="background: linear-gradient(to top, #7ab5ff, transparent);"></div>
-      <!-- Subtle grid texture -->
-      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-    </div>
+          <article class="servitude-point reveal r-1">
+            <div class="number">02</div>
+            <h3>Reduced Right-of-Passage Servitude</h3>
+            <p>The second servitude concerns a <strong>substantially reduced pedestrian right of passage</strong>. The proposed route is located entirely along one side of the project, adjacent to the Groupe Sélection senior residence.</p>
+            <p>Rather than creating a passage through the project, it provides only a <strong>short pedestrian connection</strong> between the existing walking path on Étienne-Lavoie and the waterfront path that continues toward the senior residence.</p>
+            <p>This significantly limits the impact of the right of passage on the project while maintaining the required pedestrian connection.</p>
+            <p>It does <strong>not cut through the project</strong>, and its impact on the property has been eliminated.</p>
+          </article>
+        </div>
 
-    <!-- Overlay for text contrast -->
-    <div class="hero-overlay absolute inset-0"></div>
+        <div class="benefits reveal r-2">
+          <p class="subhead">Benefits</p>
+          <div class="benefit-grid">
+            <article class="benefit">
+              <h3>Infrastructure Servitude</h3>
+              <p>Once this servitude is granted, the syndicate of co-ownership will no longer be financially responsible for repairing the underground water, drainage, and sewer systems if they are damaged or fail.</p>
+            </article>
+            <article class="benefit">
+              <h3>Right of Passage</h3>
+              <p>Residents will benefit from a multi-use pathway extending from the existing path on Étienne-Lavoie to the waterfront.</p>
+            </article>
+          </div>
+        </div>
 
-    <!-- Floating "Transparency First" badge -->
-    <div class="absolute top-28 right-6 md:top-32 md:right-10 z-10 reveal reveal-delay-4">
-      <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-white text-xs font-semibold tracking-widest uppercase shadow-lg">
-        <span class="w-2 h-2 rounded-full bg-river-400 animate-pulse"></span>
-        Transparency First
-      </div>
-    </div>
+        <div class="plans-summary reveal r-2">
+          <h3>Plans for Approval</h3>
+          <p>The attached plans provide:</p>
+          <ul>
+            <li>a <strong>visual representation</strong> showing the location and extent of the two servitudes; and</li>
+            <li>the corresponding <strong>legal and technical plan</strong> defining the servitudes for approval.</li>
+          </ul>
+          <p class="lead">The objective tonight is straightforward: <strong>transfer the liability for municipal infrastructure to the City of Laval and grant a right of passage for the continuation of the pedestrian walkway from Étienne-Lavoie.</strong></p>
+        </div>
 
-    <!-- Hero content -->
-    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-
-      <!-- Pre-title label -->
-      <div class="reveal mb-6 inline-flex items-center gap-2 text-river-300 text-xs font-semibold tracking-[0.2em] uppercase">
-        <span class="block w-8 h-px bg-river-400"></span>
-        Rivière des Prairies · Sainte-Dorothée, Laval
-        <span class="block w-8 h-px bg-river-400"></span>
-      </div>
-
-      <!-- Main tagline -->
-      <h1 class="reveal reveal-delay-1 font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-6">
-        The River.<br />
-        <em class="text-river-300 not-italic">The Home. The Story.</em>
-      </h1>
-
-      <!-- Subtitle -->
-      <p class="reveal reveal-delay-2 text-lg md:text-xl text-slate-300 font-light tracking-wide mb-10 max-w-2xl mx-auto">
-        Luxury Waterfront Residences — Rivière des Prairies<br />
-        <span class="text-slate-400 text-base">Crafted with intention. Built with honesty.</span>
-      </p>
-
-      <!-- CTAs -->
-      <div class="reveal reveal-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#story" class="px-8 py-3.5 bg-river-600 hover:bg-river-500 text-white font-semibold rounded-full transition-colors shadow-lg shadow-river-900/40">
-          Discover the Vision
-        </a>
-      </div>
-    </div>
-
-    <!-- Scroll arrow -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 bounce-arrow">
-      <a href="#story" aria-label="Scroll down" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors">
-        <span class="text-xs tracking-widest uppercase font-medium">Scroll</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
-      </a>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════
-       SECTION 2 — OUR STORY
-  ══════════════════════════════════════════════════════ -->
-  <section id="story" class="py-24 lg:py-32 bg-white">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-
-      <!-- Section header -->
-      <div class="max-w-3xl mb-16 reveal">
-        <p class="text-river-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3">Our Story</p>
-        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-river-900 leading-tight mb-6">
-          Domaine des Berges 13
-        </h2>
-        <p class="text-slate-500 text-lg font-medium italic mb-4">
-          "Berges" — the French word for riverbanks. "13" — Autoroute 13, the artery that connects this peaceful corner of Sainte-Dorothée, Laval to the heart of Montréal.
-        </p>
-        <div class="w-16 h-1 bg-river-500 rounded-full"></div>
-      </div>
-
-      <!-- Narrative text -->
-      <div class="max-w-3xl mb-10 reveal">
-        <p class="text-slate-600 text-lg leading-relaxed mb-5">
-          Every great project begins with a place that speaks. For us, it was the quiet edge of the Rivière des Prairies — a stretch of riverbank that had long been overlooked, hidden just beyond the end of Rue Étienne-Lavoie. The name DDB13 was never simply a brand. It was a promise: to honour the land, the water, and the people who would one day call this home.
-        </p>
-        <p class="text-slate-600 text-lg leading-relaxed mb-5">
-          With the dawn of Aquablu, we delivered on that promise and beyond.
-        </p>
-        <p class="text-slate-600 text-lg leading-relaxed">
-          The river does not hide its current. Neither do we.
-        </p>
-      </div>
-
-      <!-- Site aerial photo -->
-      <div class="max-w-3xl mb-20 reveal">
-        <figure>
-          <img
-            src="DSC_0140.png"
-            alt="Aerial view of the Aquablu site along Autoroute 13 and the Rivière des Prairies, August 2011"
-            class="w-full rounded-2xl shadow-lg object-cover"
-          />
-          <figcaption class="mt-4 flex items-center gap-2 text-slate-400 text-sm">
-            <span class="w-6 h-px bg-slate-300"></span>
-            Aerial view of the site — August 2011. The land that would become Aquablu, before a single foundation was poured.
-          </figcaption>
-        </figure>
-        <figure class="mt-8">
-          <img
-            src="DSC_0203.png"
-            alt="The end of the road and the beginning of a dream"
-            class="w-full rounded-2xl shadow-lg object-cover"
-          />
-          <figcaption class="mt-4 flex items-center gap-2 text-slate-400 text-sm">
-            <span class="w-6 h-px bg-slate-300"></span>
-            The end of the road and the beginning of a dream.
-          </figcaption>
+        <figure class="servitude-plan reveal r-2">
+          <img src="servitudes-overview.png?v=2" alt="Annotated aerial overview of the proposed aqueduct and right-of-passage servitudes at Aquablu" data-cap="Annotated overview showing the proposed aqueduct servitude in blue and the reduced right of passage in green." />
+          <figcaption>Annotated overview of the proposed aqueduct servitude and reduced pedestrian right of passage.</figcaption>
         </figure>
 
-        <!-- Aquablu logo -->
-        <div class="mt-10 flex justify-center reveal">
-          <img src="download-1.jpg" alt="Aquablu logo" class="w-128 md:w-160 object-contain" style="width:32rem;" />
+        <div class="qa-section reveal">
+          <p class="eyebrow">Questions &amp; Answers</p>
+          <h3>Aquablu Servitudes Q&amp;A</h3>
+          <div class="qa-list">
+            <article class="qa-item">
+              <p class="qa-question"><span class="qa-label">Question</span>Why are the co-owners being asked to approve these servitudes?</p>
+              <p class="qa-answer"><span class="qa-label">Answer</span>The purpose is to clarify responsibilities and reduce the burden and uncertainty currently carried by the co-owners. The infrastructure servitude is intended to transfer responsibility for the repair and maintenance of the aqueduct, sewer, and drainage infrastructure beneath the street to the City of Laval.</p>
+            </article>
+            <article class="qa-item">
+              <p class="qa-question"><span class="qa-label">Question</span>Does the right-of-passage servitude give the public broad access through Aquablu?</p>
+              <p class="qa-answer"><span class="qa-label">Answer</span>No. The proposed right of passage has been substantially reduced and is confined to one side of the project, adjacent to the Panorama seniors' residence. It is essentially a short connection between the existing walking path on Étienne-Lavoie and the waterfront path leading toward the seniors' residence.</p>
+            </article>
+            <article class="qa-item">
+              <p class="qa-question"><span class="qa-label">Question</span>Will this create a major new pathway through the development?</p>
+              <p class="qa-answer"><span class="qa-label">Answer</span>No. The intention is to create a limited, clearly defined connection, not a general right of passage throughout the Aquablu property.</p>
+            </article>
+            <article class="qa-item">
+              <p class="qa-question"><span class="qa-label">Question</span>What is the principal benefit to the co-owners?</p>
+              <p class="qa-answer"><span class="qa-label">Answer</span>The most significant benefit is the infrastructure arrangement. Rather than leaving the co-owners exposed to potentially substantial costs if the underground municipal infrastructure fails, the arrangement is intended to place responsibility for that infrastructure with the City of Laval.</p>
+            </article>
+            <article class="qa-item">
+              <p class="qa-question"><span class="qa-label">Question</span>Will this extension to the walking path cost Aquablu owners anything?</p>
+              <p class="qa-answer"><span class="qa-label">Answer</span>No. All costs associated with extending the path will be covered by the City of Laval.</p>
+            </article>
+            <article class="qa-item">
+              <p class="qa-question"><span class="qa-label">Question</span>Can co-owners see exactly where the servitudes are located?</p>
+              <p class="qa-answer"><span class="qa-label">Answer</span>Yes. The accompanying plans provide both a visual representation and the technical legal description of the areas affected by the servitudes.</p>
+            </article>
+          </div>
+        </div>
+
+        <figure class="servitude-plan reveal r-2">
+          <img src="satellite-view-servitudes.jpg" alt="Satellite plan showing the infrastructure servitude and reduced pedestrian right of passage at Aquablu" data-cap="Satellite view showing the location and extent of the two proposed servitudes." />
+          <figcaption>Satellite view showing the infrastructure servitude in blue and the reduced pedestrian right of passage in green.</figcaption>
+          <div class="servitude-plan-actions">
+            <a href="satellite-view-servitudes.pdf" target="_blank" rel="noopener" class="btn btn-primary">View satellite plan</a>
+            <a href="satellite-view-servitudes.pdf" download class="btn btn-ghost">Download</a>
+          </div>
+        </figure>
+
+        <div class="approved-documents reveal">
+          <h3>Approved technical documents</h3>
+          <div class="approved-document-grid">
+            <article class="approved-document">
+              <div class="approved-document-preview">
+                <img src="approved-servitude-plan-14685.jpg" alt="Metrica technical plan 14685 showing the servitude to be acquired" data-cap="Technical plan 14685 — servitude to be acquired." />
+              </div>
+              <div class="approved-document-body">
+                <p class="subhead">Technical plan · 1 page</p>
+                <h4>Technical Plan 14685</h4>
+                <p>The Metrica plan defines the location, measurements, and boundaries of the proposed servitude.</p>
+                <div class="approved-document-actions">
+                  <a href="approved-servitude-plan-14685.pdf" target="_blank" rel="noopener" class="btn btn-primary">View PDF</a>
+                  <a href="approved-servitude-plan-14685.pdf" download class="btn btn-ghost">Download</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="approved-document">
+              <div class="approved-document-preview">
+                <img src="approved-servitude-technical-description-14685.jpg" alt="Legal technical description accompanying plan 14685" data-cap="Legal technical description accompanying plan 14685." />
+              </div>
+              <div class="approved-document-body">
+                <p class="subhead">Legal description · 4 pages</p>
+                <h4>Technical Description 14685</h4>
+                <p>The corresponding legal description defines the affected parcels, bearings, distances, and surface areas.</p>
+                <div class="approved-document-actions">
+                  <a href="approved-servitude-technical-description-14685.pdf" target="_blank" rel="noopener" class="btn btn-primary">View PDF</a>
+                  <a href="approved-servitude-technical-description-14685.pdf" download class="btn btn-ghost">Download</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="approved-document">
+              <div class="approved-document-preview">
+                <img src="approved-servitude-plan-16469.jpg" alt="Certified Metrica technical plan 16469 showing the servitude to be acquired" data-cap="Certified technical plan 16469 — servitude to be acquired, August 2026." />
+              </div>
+              <div class="approved-document-body">
+                <p class="subhead">Certified plan · 1 page</p>
+                <h4>Technical Plan 16469</h4>
+                <p>The Metrica plan defines the location, measurements, and boundaries of the servitude to be acquired.</p>
+                <div class="approved-document-actions">
+                  <a href="approved-servitude-plan-16469.pdf" target="_blank" rel="noopener" class="btn btn-primary">View PDF</a>
+                  <a href="approved-servitude-plan-16469.pdf" download class="btn btn-ghost">Download</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="approved-document">
+              <div class="approved-document-preview">
+                <img src="approved-servitude-technical-description-16469.jpg" alt="Certified technical description accompanying plan 16469" data-cap="Certified technical description accompanying plan 16469, August 2026." />
+              </div>
+              <div class="approved-document-body">
+                <p class="subhead">Legal description · 2 pages</p>
+                <h4>Technical Description 16469</h4>
+                <p>The corresponding legal description defines the affected parcels, bearings, distances, and surface areas.</p>
+                <div class="approved-document-actions">
+                  <a href="approved-servitude-technical-description-16469.pdf" target="_blank" rel="noopener" class="btn btn-primary">View PDF</a>
+                  <a href="approved-servitude-technical-description-16469.pdf" download class="btn btn-ghost">Download</a>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
 
-      <!-- Timeline -->
-      <div class="mb-20">
-        <h3 class="font-serif text-2xl md:text-3xl font-semibold text-river-900 mb-10 reveal">Our Journey</h3>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-          <!-- Milestone 1 -->
-          <div class="reveal timeline-item text-center p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:shadow-md transition-shadow">
-            <div class="w-12 h-12 rounded-full bg-river-100 text-river-700 flex items-center justify-center mx-auto mb-4 font-bold font-serif text-lg">1</div>
-            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-2">2011</div>
-            <h4 class="font-serif text-xl font-semibold text-river-900 mb-2">Land Acquired</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">The founding parcel along the Rivière des Prairies in Sainte-Dorothée is secured, setting the vision in motion.</p>
-          </div>
-
-          <!-- Milestone 2 -->
-          <div class="reveal reveal-delay-1 timeline-item text-center p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:shadow-md transition-shadow">
-            <div class="w-12 h-12 rounded-full bg-river-100 text-river-700 flex items-center justify-center mx-auto mb-4 font-bold font-serif text-lg">2</div>
-            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-2">2012</div>
-            <h4 class="font-serif text-xl font-semibold text-river-900 mb-2">Vision Formed</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">The master plan for Aquablu — a multi-phase waterfront community — takes shape, with a commitment to transparency and architectural integrity.</p>
-          </div>
-
-          <!-- Milestone 3 -->
-          <div class="reveal reveal-delay-2 timeline-item text-center p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:shadow-md transition-shadow">
-            <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-4 font-bold font-serif text-lg">3</div>
-            <div class="text-emerald-600 text-xs font-semibold tracking-widest uppercase mb-2">2016</div>
-            <h4 class="font-serif text-xl font-semibold text-river-900 mb-2">Phase 1 Delivered</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">The first Aquablu building is completed and handed over to proud owners — a milestone that validated every promise we made.</p>
-          </div>
-
-          <!-- Milestone 4 -->
-          <div class="reveal reveal-delay-3 timeline-item text-center p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:shadow-md transition-shadow">
-            <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-4 font-bold font-serif text-lg">4</div>
-            <div class="text-emerald-600 text-xs font-semibold tracking-widest uppercase mb-2">2021</div>
-            <h4 class="font-serif text-xl font-semibold text-river-900 mb-2">Phase 2 Delivered</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">The second Aquablu building is completed and delivered. The community grows. Phase 3 approval is now our focus.</p>
-          </div>
-
-        </div>
-      </div>
-
-
     </div>
   </section>
 
-
-  <!-- ═══════════════════════════════════════════════════
-       SECTION 3 — OUR HISTORY IN PICTURES
-  ══════════════════════════════════════════════════════ -->
-  <section id="challenges" class="py-24 lg:py-32 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-
-      <!-- Section header -->
-      <div class="max-w-3xl mb-16 reveal">
-        <p class="text-river-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3">Gallery</p>
-        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-river-900 leading-tight mb-6">
-          Photos
-        </h2>
-        <p class="text-slate-500 text-lg leading-relaxed">
-          From an empty riverbank to a thriving waterfront community — every image tells a chapter of the Aquablu story.
-        </p>
-        <div class="w-16 h-1 bg-river-500 rounded-full mt-6"></div>
-      </div>
-
-      <!-- Photo grid — add new <figure> blocks to extend -->
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-
-        <!-- Photo 1 -->
-        <figure class="reveal flex flex-col">
-          <div class="overflow-hidden rounded-2xl shadow-sm">
-            <img src="DSC_0140.png" alt="The land from above, 2011" class="w-full h-44 object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
-          <figcaption class="mt-4 px-1">
-            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-1">2011 — Aerial</div>
-            <h4 class="font-serif text-lg font-semibold text-river-900 mb-1">The Land, From Above</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Aerial view of the site along Autoroute 13, with the Rivière des Prairies stretching to the north. The vacant parcel that would become Aquablu.</p>
-          </figcaption>
-        </figure>
-
-        <!-- Photo 2 -->
-        <figure class="reveal reveal-delay-1 flex flex-col">
-          <div class="overflow-hidden rounded-2xl shadow-sm">
-            <img src="DSC_0186.png" alt="The natural riverbank, 2011" class="w-full h-44 object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
-          <figcaption class="mt-4 px-1">
-            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-1">2011 — Riverbank</div>
-            <h4 class="font-serif text-lg font-semibold text-river-900 mb-1">A Natural Riverbank</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">The wooded edge of the property, right on the water. Undisturbed land that shaped our commitment to preserving the character of the site.</p>
-          </figcaption>
-        </figure>
-
-        <!-- Photo 3 -->
-        <figure class="reveal reveal-delay-2 flex flex-col">
-          <div class="overflow-hidden rounded-2xl shadow-sm">
-            <img src="DSC_0203.png" alt="The end of the road and the beginning of a dream" class="w-full h-44 object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
-          <figcaption class="mt-4 px-1">
-            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-1">2011 — Site</div>
-            <h4 class="font-serif text-lg font-semibold text-river-900 mb-1">The End of the Road and a New Beginning</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">The site at the intersection of Autoroute 13 and the neighbourhood, cleared and ready. The moment the vision became real.</p>
-          </figcaption>
-        </figure>
-
-        <!-- Photo 4 -->
-
-        <!-- Photo 5 -->
-        <figure class="reveal reveal-delay-1 flex flex-col">
-          <div class="overflow-hidden rounded-2xl shadow-sm">
-            <img src="IMG_1841.png" alt="Architectural rendering — courtyard and amenities" class="w-full h-44 object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
-          <figcaption class="mt-4 px-1">
-            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-1">Rendering — Amenities</div>
-            <h4 class="font-serif text-lg font-semibold text-river-900 mb-1">The Vision: Courtyard &amp; Pool</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">An early architectural rendering of the Aquablu courtyard, outdoor pool, and landscaped terraces — a vision of the life we were building toward.</p>
-          </figcaption>
-        </figure>
-
-        <!-- Photo 6 -->
-        <figure class="reveal reveal-delay-2 flex flex-col">
-          <div class="overflow-hidden rounded-2xl shadow-sm">
-            <img src="IMG_1842.png" alt="Architectural rendering — the tower" class="w-full h-44 object-cover hover:scale-105 transition-transform duration-500" />
-          </div>
-          <figcaption class="mt-4 px-1">
-            <div class="text-river-600 text-xs font-semibold tracking-widest uppercase mb-1">Rendering — Architecture</div>
-            <h4 class="font-serif text-lg font-semibold text-river-900 mb-1">The Vision: A Landmark on the River</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">The original architectural concept for Aquablu — a tower designed to honour the river it faces, with every residence oriented toward the water.</p>
-          </figcaption>
-        </figure>
-
-      </div>
-
-      <!-- More coming -->
-      <div class="mt-16 text-center reveal">
-        <p class="font-serif text-2xl md:text-3xl text-slate-400 italic">More coming…</p>
-      </div>
-
-    </div>
-  </section>
-
-
-
-
-  <!-- ═══════════════════════════════════════════════════
-       SECTION 4 — FACT CHECK
-  ══════════════════════════════════════════════════════ -->
-  <section id="factcheck" class="py-24 lg:py-32 bg-river-950">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-
-      <!-- Section header -->
-      <div class="max-w-3xl mb-16 reveal">
-        <p class="text-river-400 text-xs font-semibold tracking-[0.2em] uppercase mb-3">Transparency</p>
-        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-          Fact Check
-        </h2>
-        <p class="text-slate-400 text-lg leading-relaxed">
-          Rumours travel fast. Facts travel slower. Here we set the record straight — plainly, directly, and on the record.
-        </p>
-        <div class="w-16 h-1 bg-river-500 rounded-full mt-6"></div>
-        <img src="Rumours.png" alt="Rumours" class="mt-8 object-contain opacity-90" style="width:100%; max-width:56rem;" />
-        <p class="text-slate-500 text-sm italic mt-4">Rumours travel fast. Facts travel slower.</p>
-      </div>
-
-      <!-- Fact cards -->
-      <div class="grid md:grid-cols-2 gap-6">
-
-        <!-- Fact 1 -->
-        <div class="reveal p-8 rounded-3xl bg-white/5 border border-white/10">
-          <div class="flex items-center gap-3 mb-5">
-            <span class="px-3 py-1 rounded-full bg-red-500/15 border border-red-400/30 text-red-300 text-xs font-bold tracking-widest uppercase">Claim</span>
-            <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-bold tracking-widest uppercase">False ✗</span>
-          </div>
-          <h3 class="font-serif text-xl font-semibold text-white mb-3">"Phase 3 has been abandoned."</h3>
-          <p class="text-slate-400 text-base leading-relaxed">The partners own the Phase 3 land outright — it has not been sold, surrendered, or abandoned. We are actively pursuing city approval. The process is long, but the commitment is unchanged.</p>
-        </div>
-
-        <!-- Fact 2 -->
-        <div class="reveal reveal-delay-1 p-8 rounded-3xl bg-white/5 border border-white/10">
-          <div class="flex items-center gap-3 mb-5">
-            <span class="px-3 py-1 rounded-full bg-red-500/15 border border-red-400/30 text-red-300 text-xs font-bold tracking-widest uppercase">Claim</span>
-            <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-bold tracking-widest uppercase">False ✗</span>
-          </div>
-          <h3 class="font-serif text-xl font-semibold text-white mb-3">"DDB13 has financial difficulties."</h3>
-          <p class="text-slate-400 text-base leading-relaxed">The delays are entirely administrative and regulatory — not financial. The land is owned. Phase 1 and Phase 2 were both delivered. There are no financial issues behind the Phase 3 timeline.</p>
-        </div>
-
-      </div>
-
-      <!-- Call to action -->
-      <div class="mt-14 reveal">
-        <p class="text-slate-400 text-xl md:text-2xl italic leading-relaxed max-w-2xl font-serif">
-          Heard something through the grapevine? We welcome the conversation. Reach out through the <a href="#contact" class="text-river-400 hover:text-river-300 underline underline-offset-4 transition-colors">contact section</a> and we'll address it here.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════
-       SECTION 5 — BLOG (AQUABLU COMMUNITY)
-  ══════════════════════════════════════════════════════ -->
-  <section id="blog" class="py-24 lg:py-32 bg-white">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-
-      <!-- Section header -->
-      <div class="max-w-3xl mb-16 reveal">
-        <p class="text-river-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3">Blog</p>
-        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-river-900 leading-tight mb-4">
-          Aquablu Community
-        </h2>
-        <p class="text-slate-600 text-xl font-medium mb-3">A Direct Line to Aquablu Owners</p>
-        <p class="text-slate-500 text-lg leading-relaxed">
-          This is a transparent space where we address issues directly — before rumours start. Real information, plain language, no spin.
-        </p>
-        <div class="w-16 h-1 bg-river-500 rounded-full mt-6"></div>
-      </div>
-
-
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════
-       SECTION 6 — CONTACT
-  ══════════════════════════════════════════════════════ -->
-  <section id="contact" class="py-24 lg:py-32 bg-river-950">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-start">
-
-        <!-- Left: Contact info -->
+  <!-- CONTACT -->
+  <section id="contact" class="dark on-dark">
+    <div class="wrap">
+      <div class="contact-grid">
         <div class="reveal">
-          <p class="text-river-400 text-xs font-semibold tracking-[0.2em] uppercase mb-3">Get in Touch</p>
-          <h2 class="font-serif text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-            We Are Here<br />To Talk
-          </h2>
-          <p class="text-slate-400 text-lg leading-relaxed mb-10">
-            Questions about your unit, the development timeline, or Phase 3? Reach out directly. We respond personally — because transparency is not just a tagline.
-          </p>
-
-          <!-- Contact details -->
-          <div class="space-y-6">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-river-800/60 border border-river-700/40 flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-river-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                </svg>
-              </div>
-              <div>
-                <div class="text-xs font-semibold text-river-400 tracking-widest uppercase mb-1">Email</div>
-                <a href="mailto:jgarabedian@gmail.com" class="text-white text-lg hover:text-river-300 transition-colors">jgarabedian@gmail.com</a>
-              </div>
-            </div>
-
-
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-river-800/60 border border-river-700/40 flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-river-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
-              </div>
-              <div>
-                <div class="text-xs font-semibold text-river-400 tracking-widest uppercase mb-1">Location</div>
-                <p class="text-white text-lg">Sainte-Dorothée, Laval, QC</p>
-              </div>
-            </div>
+          <p class="eyebrow">Setting the record straight</p>
+          <h2>Ask us anything.</h2>
+          <p class="contact-lead">Rumours travel fast. Facts travel slower. Ask us anything and we will set the record straight.</p>
+          <div class="contact-meta">
+            <div><div class="k">Email</div><a class="v" href="mailto:jgarabedian@gmail.com">jgarabedian@gmail.com</a></div>
+            <div><div class="k">Where we are</div><span class="v">Sainte-Dorothée, Laval, QC</span></div>
           </div>
         </div>
-
-        <!-- Right: Contact form -->
-        <div class="reveal reveal-delay-1">
-          <form class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-10 space-y-5">
-            <div>
-              <label for="contact-name" class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
-              <input
-                id="contact-name"
-                type="text"
-                placeholder="Your name"
-                class="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-river-500 focus:border-transparent transition-all text-base"
-              />
-            </div>
-            <div>
-              <label for="contact-email" class="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
-              <input
-                id="contact-email"
-                type="email"
-                placeholder="your@email.com"
-                class="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-river-500 focus:border-transparent transition-all text-base"
-              />
-            </div>
-            <div>
-              <label for="contact-subject" class="block text-sm font-medium text-slate-300 mb-2">Subject</label>
-              <select
-                id="contact-subject"
-                class="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-xl text-slate-300 focus:outline-none focus:ring-2 focus:ring-river-500 focus:border-transparent transition-all text-base appearance-none"
-              >
-                <option value="" class="bg-river-950 text-slate-300">Select a topic</option>
-                <option value="phase3" class="bg-river-950 text-slate-300">Phase 3 — Status &amp; Timelines</option>
-                <option value="servitude" class="bg-river-950 text-slate-300">Servitude</option>
-                <option value="general" class="bg-river-950 text-slate-300">General Inquiry</option>
-                <option value="media" class="bg-river-950 text-slate-300">Media / Press</option>
-              </select>
-            </div>
-            <div>
-              <label for="contact-message" class="block text-sm font-medium text-slate-300 mb-2">Message</label>
-              <textarea
-                id="contact-message"
-                rows="5"
-                placeholder="Tell us what's on your mind..."
-                class="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-river-500 focus:border-transparent transition-all text-base resize-none"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              class="w-full py-4 px-8 bg-river-600 hover:bg-river-500 text-white font-semibold rounded-xl transition-colors shadow-lg shadow-river-900/30 text-base"
-            >
-              Send Message
-            </button>
-            <p class="text-slate-500 text-xs text-center leading-relaxed">
-              We read every message and respond personally. Typically within 1–2 business days.
-            </p>
-          </form>
-        </div>
-
+        <form class="note-form reveal r-1" onsubmit="return false;">
+          <div class="field"><label for="c-name">Your name</label><input id="c-name" type="text" placeholder="Your name" /></div>
+          <div class="field"><label for="c-email">Email</label><input id="c-email" type="email" placeholder="your@email.com" /></div>
+          <div class="field"><label for="c-topic">What's it about?</label>
+            <select id="c-topic">
+              <option>Choose a topic</option>
+              <option>The last building — timeline</option>
+              <option>Servitude</option>
+              <option>A rumour to check</option>
+              <option>General question</option>
+              <option>Media / press</option>
+            </select>
+          </div>
+          <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" placeholder="What's on your mind?"></textarea></div>
+          <button type="submit" class="btn btn-light" style="width:100%;justify-content:center;">Send message</button>
+          <p class="form-note">We read every message and reply personally — usually within 1–2 business days.</p>
+        </form>
       </div>
     </div>
   </section>
 
-
-  <!-- ═══════════════════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════════════════════ -->
-  <footer class="bg-river-950 border-t border-white/5 py-10">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-
-        <!-- Brand mark -->
-        <div class="flex items-center gap-3">
-          <span class="font-serif font-bold text-xl text-white">ddb<span class="text-river-400">13</span></span>
-          <span class="text-slate-600 text-sm">Domaine des Berges 13</span>
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <a href="#top" class="brand">Domaine des Berges&nbsp;<span class="n">13</span></a>
+          <p>A focused resource for Aquablu owners concerning the proposed servitudes and their supporting documents.</p>
         </div>
-
-        <!-- Footer nav -->
-        <nav class="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-500">
-          <a href="#home"       class="hover:text-slate-300 transition-colors">Home</a>
-          <a href="#story"      class="hover:text-slate-300 transition-colors">Our Story</a>
-          <a href="#challenges" class="hover:text-slate-300 transition-colors">Photos</a>
-          <a href="#factcheck"  class="hover:text-slate-300 transition-colors">Fact Check</a>
-          <a href="#blog"       class="hover:text-slate-300 transition-colors">Blog</a>
-          <a href="#contact"    class="hover:text-slate-300 transition-colors">Contact</a>
+        <nav class="foot-nav">
+          <a href="#servitudes">Servitudes</a>
+          <a href="#contact">Contact</a>
+          <a href="fr.html">Français</a>
         </nav>
-
-        <!-- Copyright -->
-        <p class="text-slate-600 text-sm text-center">
-          &copy; 2025 Domaine des Berges 13. All rights reserved.
-        </p>
+      </div>
+      <div class="foot-meta">
+        <span>© 2026 Domaine des Berges 13</span>
+        <span>Sainte-Dorothée, Laval, QC</span>
       </div>
     </div>
   </footer>
 
-
-  <!-- Lightbox overlay -->
-  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
-    <span id="lightbox-close" aria-label="Close">&times;</span>
-    <img id="lightbox-img" src="" alt="" />
+  <!-- LIGHTBOX -->
+  <div id="lb" aria-hidden="true">
+    <button id="lb-x" aria-label="Close">&times;</button>
+    <img id="lb-img" src="" alt="" />
+    <div id="lb-cap"></div>
   </div>
 
-
-  <!-- ═══════════════════════════════════════════════════
-       JAVASCRIPT
-  ══════════════════════════════════════════════════════ -->
   <script>
-    // ─── Nav scroll effect ─────────────────────────────
-    const navbar = document.getElementById('navbar');
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('solid', window.scrollY > 20);
+    addEventListener('scroll', onScroll, { passive:true }); onScroll();
 
-    function handleNavScroll() {
-      if (window.scrollY > 40) {
-        navbar.classList.add('nav-scrolled');
-      } else {
-        navbar.classList.remove('nav-scrolled');
-      }
-    }
+    const burger = document.getElementById('burger'), mobile = document.getElementById('mobile');
+    burger.addEventListener('click', () => { const o = mobile.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
+    document.querySelectorAll('#mobile a').forEach(a => a.addEventListener('click', () => { mobile.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }));
 
-    window.addEventListener('scroll', handleNavScroll, { passive: true });
-    handleNavScroll(); // run once on load
+    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e){
+      const t = document.querySelector(this.getAttribute('href'));
+      if (t){ e.preventDefault(); t.scrollIntoView({ behavior:'smooth', block:'start' }); }
+    }));
 
+    const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }), { rootMargin:'0px 0px -60px 0px', threshold:.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    // ─── Mobile hamburger menu ─────────────────────────
-    const hamburger     = document.getElementById('hamburger');
-    const mobileMenu    = document.getElementById('mobile-menu');
-    const hamburgerLines = hamburger.querySelectorAll('.hamburger-line');
-    let menuOpen = false;
+    const links = document.querySelectorAll('.navlink[data-section]');
+    const secIo = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting){ const id = en.target.id; links.forEach(l => l.classList.toggle('active', l.dataset.section === id)); } }), { rootMargin:'-45% 0px -50% 0px' });
+    document.querySelectorAll('section[id]').forEach(s => secIo.observe(s));
 
-    hamburger.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-
-      if (menuOpen) {
-        mobileMenu.classList.remove('hidden');
-        // Animate to X
-        hamburgerLines[0].style.transform = 'translateY(6px) rotate(45deg)';
-        hamburgerLines[1].style.opacity   = '0';
-        hamburgerLines[2].style.transform = 'translateY(-6px) rotate(-45deg)';
-      } else {
-        mobileMenu.classList.add('hidden');
-        hamburgerLines[0].style.transform = '';
-        hamburgerLines[1].style.opacity   = '';
-        hamburgerLines[2].style.transform = '';
-      }
-    });
-
-    // Close mobile menu when a link is clicked
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        menuOpen = false;
-        mobileMenu.classList.add('hidden');
-        hamburgerLines[0].style.transform = '';
-        hamburgerLines[1].style.opacity   = '';
-        hamburgerLines[2].style.transform = '';
-      });
-    });
-
-
-    // ─── Smooth scroll (polyfill for older browsers) ───
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-
-
-    // ─── Active nav link on scroll (Intersection Observer)
-    const sections  = document.querySelectorAll('section[id]');
-    const navLinks  = document.querySelectorAll('.nav-link[data-section]');
-
-    const sectionObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach(link => {
-            link.classList.toggle('active', link.dataset.section === id);
-          });
-        }
-      });
-    }, {
-      rootMargin: '-40% 0px -55% 0px',
-      threshold:  0,
-    });
-
-    sections.forEach(section => sectionObserver.observe(section));
-
-
-    // ─── Scroll-reveal fade-in animations ─────────────
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target); // animate once
-        }
-      });
-    }, {
-      rootMargin: '0px 0px -80px 0px',
-      threshold:  0.05,
-    });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-
-    // ─── Contact form: prevent default + confirmation ──
-    document.querySelector('form').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const btn = this.querySelector('button[type="submit"]');
-      btn.textContent = 'Message Sent — Thank You';
-      btn.disabled = true;
-      btn.classList.replace('bg-river-600', 'bg-emerald-600');
-      btn.classList.replace('hover:bg-river-500', 'hover:bg-emerald-600');
-    });
-
-
-    // ─── Lightbox ─────────────────────────────────────
-    const lightbox    = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-
-    document.querySelectorAll('#challenges img').forEach(img => {
-      img.classList.add('gallery-img');
-      img.addEventListener('click', () => {
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightbox.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-
-    lightbox.addEventListener('click', (e) => {
-      if (e.target !== lightboxImg) closeLightbox();
-    });
-
-    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
-
-    function closeLightbox() {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    const lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-cap');
+    document.querySelectorAll('.gallery .shot img, .servitude-plan img, .approved-document img').forEach(img => img.addEventListener('click', () => {
+      lbImg.src = img.src; lbImg.alt = img.alt; lbCap.textContent = img.dataset.cap || '';
+      lb.classList.add('on'); document.body.style.overflow='hidden';
+    }));
+    const close = () => { lb.classList.remove('on'); document.body.style.overflow=''; };
+    lb.addEventListener('click', e => { if (e.target !== lbImg) close(); });
+    document.getElementById('lb-x').addEventListener('click', close);
+    addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   </script>
-
-
 </body>
 </html>
