@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Thoughts — Domaine des Berges 13</title>
+  <meta name="description" content="A personal note from the partners of Domaine des Berges 13: the Phase 3 parcel isn't green space — it's gravelled, serviced land that stays an unfinished construction site until the east wing is built. Finishing it is what makes room for extra parking and more amenities." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Source+Serif+4:ital,opsz,wght@1,8..60,400;1,8..60,500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============ TOKENS ============ */
+    :root{
+      --paper:#f4f6f7;
+      --paper-2:#eef1f2;
+      --surface:#ffffff;
+      --ink:#111c22;
+      --slate:#556069;
+      --slate-2:#7c868e;
+      --line:#d7dee1;
+      --line-2:#c3ccd0;
+      --aqua:#0c5a68;
+      --aqua-bright:#12798c;
+      --aqua-deep:#062e37;
+      --aqua-deep-2:#04222a;
+      --seal:#1c7a53;
+      --flag:#b0432f;
+      --paper-on-dark:#e9eef0;
+      --slate-on-dark:#9fb0b6;
+      --line-on-dark:rgba(233,238,240,.16);
+      --maxw:1120px;
+    }
+    *{box-sizing:border-box;}
+    html{font-family:'Source Serif 4',Georgia,serif; -webkit-text-size-adjust:100%;}
+    body{ margin:0; background:var(--paper); color:var(--ink);
+      font-size:17px; line-height:1.75; letter-spacing:.003em;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+    ::selection{ background:var(--aqua); color:#fff; }
+
+    h1,h2,h3,h4{ font-family:'Archivo',system-ui,sans-serif; }
+    .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:.72rem; font-weight:500;
+      letter-spacing:.2em; text-transform:uppercase; color:var(--aqua);
+      display:flex; align-items:center; gap:.7rem; margin:0 0 1.4rem; }
+    .eyebrow::before{ content:""; width:26px; height:1px; background:var(--aqua); flex:none; opacity:.7; }
+    a{ color:var(--aqua); text-underline-offset:3px; }
+
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 clamp(1.25rem,4vw,2.5rem); }
+    .narrow{ max-width:720px; }
+    .rule{ height:1px; background:var(--line); border:0; margin:0; }
+
+    /* utility bar */
+    .utility{ background:var(--aqua-deep); color:var(--slate-on-dark);
+      font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em; }
+    .utility .wrap{ display:flex; align-items:center; justify-content:space-between; gap:1rem;
+      height:34px; white-space:nowrap; overflow:hidden; }
+    .utility b{ color:var(--paper-on-dark); font-weight:500; }
+    .utility .u-mid{ text-transform:uppercase; overflow:hidden; text-overflow:ellipsis; }
+    @media(max-width:640px){ .utility .u-mid{ display:none; } }
+
+    /* nav */
+    #nav{ position:sticky; top:0; z-index:50; background:rgba(244,246,247,.86);
+      backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid transparent; transition:border-color .3s, background .3s; }
+    #nav.solid{ border-bottom-color:var(--line); background:rgba(244,246,247,.94); }
+    .navrow{ display:flex; align-items:center; justify-content:space-between; height:62px; }
+    .brand{ font-family:'Archivo',sans-serif; font-weight:700; font-size:1.06rem;
+      letter-spacing:-.02em; color:var(--ink); text-decoration:none; display:flex; align-items:baseline; gap:.05em; }
+    .brand .n{ color:var(--aqua); }
+    .navlinks{ display:flex; align-items:center; gap:1.6rem; }
+    .navlink{ font-family:'Archivo',sans-serif; font-size:.83rem; font-weight:500;
+      color:var(--slate); text-decoration:none; position:relative; padding:.2rem 0; transition:color .2s; }
+    .navlink:hover{ color:var(--aqua); }
+    .navlink.active{ color:var(--ink); }
+    .navlink.active::after{ content:""; position:absolute; left:0; right:0; bottom:-2px; height:2px; background:var(--aqua); }
+    .lang{ font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.1em;
+      color:var(--slate); text-decoration:none; border:1px solid var(--line-2);
+      padding:.28rem .55rem; border-radius:2px; transition:border-color .2s,color .2s; }
+    .lang:hover{ border-color:var(--aqua); color:var(--aqua); }
+    .btn{ font-family:'Archivo',sans-serif; font-size:.82rem; font-weight:600;
+      text-decoration:none; display:inline-flex; align-items:center; gap:.5rem;
+      padding:.62rem 1.15rem; border-radius:3px; transition:background .2s; }
+    .btn-primary{ background:var(--aqua); color:#fff; }
+    .btn-primary:hover{ background:var(--aqua-bright); }
+    .burger{ display:none; flex-direction:column; gap:5px; width:40px; height:40px;
+      align-items:center; justify-content:center; background:none; border:0; cursor:pointer; }
+    .burger span{ width:22px; height:1.5px; background:var(--ink); display:block; }
+    @media(max-width:720px){ .navlinks{ display:none; } .burger{ display:flex; } }
+    #mobile{ display:none; border-bottom:1px solid var(--line); background:var(--paper); }
+    #mobile.open{ display:block; }
+    #mobile a{ display:block; padding:.7rem 0; font-family:'Archivo',sans-serif; font-weight:500;
+      font-size:.95rem; color:var(--ink); text-decoration:none; border-top:1px solid var(--line); }
+    #mobile a:first-child{ border-top:0; }
+
+    /* ============ ARTICLE ============ */
+    .article-head{ padding:clamp(3rem,6vw,5rem) 0 clamp(2rem,4vw,3rem); }
+    .backlink{ font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--slate-2); text-decoration:none; display:inline-flex; gap:.5rem;
+      margin-bottom:2rem; }
+    .backlink:hover{ color:var(--aqua); }
+    .article-head h1{ font-weight:700; font-size:clamp(2.2rem,4.6vw,3.5rem); line-height:1.05;
+      letter-spacing:-.025em; margin:.4rem 0 1.3rem; }
+    .dek{ font-size:clamp(1.15rem,1.9vw,1.4rem); line-height:1.5; color:var(--slate);
+      font-style:italic; max-width:38ch; margin:0; }
+    .byline{ margin-top:2.2rem; padding-top:1.3rem; border-top:1px solid var(--line);
+      display:flex; flex-wrap:wrap; gap:.5rem 1.4rem; align-items:center;
+      font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.08em;
+      text-transform:uppercase; color:var(--slate-2); }
+    .byline b{ color:var(--ink); font-weight:500; }
+    .byline .tag{ color:var(--aqua); }
+
+    .lede-figure{ margin:0 0 clamp(2rem,4vw,3rem); }
+    .lede-figure .plate{ background:var(--surface); border:1px solid var(--line-2);
+      border-radius:3px; padding:10px; }
+    .lede-figure img{ display:block; width:100%; aspect-ratio:2/1; object-fit:cover; border-radius:2px; }
+    .lede-figure figcaption{ margin-top:.7rem; padding:0 .2rem; display:flex; justify-content:space-between;
+      gap:1rem; align-items:baseline; }
+    .lede-figure .c-txt{ font-size:.86rem; color:var(--slate); }
+    .lede-figure .c-ref{ font-family:'IBM Plex Mono',monospace; font-size:.66rem; letter-spacing:.1em;
+      color:var(--slate-2); text-transform:uppercase; white-space:nowrap; }
+
+    .body{ padding-bottom:clamp(3rem,6vw,5rem); }
+    .body p{ font-size:1.18rem; line-height:1.78; color:var(--ink); margin:0 0 1.4rem; }
+    .body p.first::first-letter{ font-family:'Archivo',sans-serif; font-weight:700;
+      font-size:3.3rem; line-height:.78; float:left; margin:.3rem .55rem 0 0; color:var(--aqua); }
+    .body h2{ font-weight:700; font-size:clamp(1.4rem,2.4vw,1.85rem); line-height:1.15;
+      letter-spacing:-.02em; margin:2.8rem 0 1.1rem; }
+    .body .mono-kicker{ font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.16em;
+      text-transform:uppercase; color:var(--aqua); display:block; margin:0 0 .4rem; }
+    .pullquote{ margin:2.6rem 0; padding:0 0 0 1.6rem; border-left:3px solid var(--aqua);
+      font-family:'Source Serif 4',serif; font-style:italic; font-weight:500;
+      font-size:clamp(1.35rem,2.4vw,1.7rem); line-height:1.4; color:var(--ink); }
+    .body .sign{ display:flex; align-items:center; gap:1rem; margin-top:2.6rem;
+      padding-top:1.6rem; border-top:1px solid var(--line); }
+    .body .sign .bar{ width:44px; height:2px; background:var(--aqua); flex:none; }
+    .body .sign span{ font-style:italic; font-size:1.08rem; color:var(--ink); }
+
+    /* record callout */
+    .callout{ background:var(--aqua-deep); color:var(--paper-on-dark);
+      border-radius:4px; padding:clamp(1.6rem,3vw,2.2rem); margin-top:3rem;
+      display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.2rem; }
+    .callout .k{ font-family:'IBM Plex Mono',monospace; font-size:.66rem; letter-spacing:.14em;
+      text-transform:uppercase; color:#54c0d1; margin-bottom:.5rem; }
+    .callout h3{ color:#fff; font-size:1.2rem; font-weight:600; margin:0; max-width:34ch; }
+    .callout a.btn{ background:var(--paper-on-dark); color:var(--aqua-deep); }
+    .callout a.btn:hover{ background:#fff; }
+
+    /* footer */
+    footer{ background:var(--aqua-deep-2); color:var(--slate-on-dark); padding:clamp(3rem,5vw,4rem) 0; }
+    .colophon{ display:grid; grid-template-columns:1.3fr 1fr; gap:2.5rem; align-items:start; }
+    @media(max-width:720px){ .colophon{ grid-template-columns:1fr; gap:1.8rem; } }
+    .colophon .brand{ color:#fff; margin-bottom:1rem; }
+    .colophon .brand .n{ color:#54c0d1; }
+    .colophon p{ font-size:.95rem; color:var(--slate-on-dark); max-width:42ch; margin:0; }
+    .foot-nav{ display:flex; flex-wrap:wrap; gap:.5rem 1.4rem; }
+    .foot-nav a{ font-family:'Archivo',sans-serif; font-size:.85rem; color:var(--slate-on-dark); text-decoration:none; }
+    .foot-nav a:hover{ color:#fff; }
+    .foot-meta{ margin-top:2.4rem; padding-top:1.4rem; border-top:1px solid var(--line-on-dark);
+      display:flex; flex-wrap:wrap; justify-content:space-between; gap:.6rem;
+      font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.08em;
+      color:var(--slate-on-dark); text-transform:uppercase; }
+
+    a:focus-visible,button:focus-visible{ outline:2px solid var(--aqua-bright); outline-offset:2px; border-radius:2px; }
+    .skip{ position:absolute; left:-9999px; top:0; background:var(--aqua); color:#fff; padding:.6rem 1rem; z-index:100; }
+    .skip:focus{ left:0; }
+
+    .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.in{ opacity:1; transform:none; }
+    @media(prefers-reduced-motion:reduce){ .reveal{ opacity:1!important; transform:none!important; } html{ scroll-behavior:auto; } }
+  </style>
+</head>
+
+<body>
+  <a href="#article" class="skip">Skip to the article</a>
+
+  <!-- UTILITY BAR -->
+  <div class="utility">
+    <div class="wrap">
+      <span>Record no. <b>DDB13&nbsp;/&nbsp;AQUABLU-2011</b></span>
+      <span class="u-mid">My Thoughts · a personal note from the partnership</span>
+      <span>Sainte-Dorothée, Laval&nbsp;QC</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="wrap navrow">
+      <a href="index.html" class="brand">Domaine&nbsp;des&nbsp;Berges&nbsp;<span class="n">13</span></a>
+      <div class="navlinks">
+        <a href="index.html" class="navlink">The Record</a>
+        <a href="thoughts.html" class="navlink active">My Thoughts</a>
+        <a href="index.html#standing" class="navlink">Where We Stand</a>
+        <a href="reflexions.html" class="lang">FR</a>
+        <a href="index.html#contact" class="btn btn-primary">Contact</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <div id="mobile" class="wrap">
+      <a href="index.html">The Record</a>
+      <a href="thoughts.html">My Thoughts</a>
+      <a href="index.html#standing">Where We Stand</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="reflexions.html">Version française →</a>
+    </div>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <header id="article" class="article-head">
+    <div class="wrap narrow">
+      <a href="index.html" class="backlink">← Back to the record</a>
+      <p class="eyebrow reveal">My Thoughts · on Phase&nbsp;3</p>
+      <h1 class="reveal">It's not green space. It's an unfinished construction site.</h1>
+      <p class="dek reveal">The Phase 3 land isn't nature we're saving. It's a gravel lot, half-built and sitting still. Finishing the east wing is the greener thing to do — more homes where the roads and pipes already are, not new roads out on farmland — and it's what finally makes room for the extra parking and the things people here have been asking for.</p>
+      <div class="byline reveal">
+        <span class="tag">Personal note</span>
+        <span><b>The partners of DDB13</b></span>
+        <span>31 August 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap narrow">
+    <figure class="lede-figure reveal">
+      <div class="plate">
+        <img src="aquablu-aerial.jpg" onerror="this.onerror=null;this.src='DSC_0203.png';" alt="Aerial view of Aquablu today — the two finished towers and the pool at left, Rue Étienne-Lavoie running through, and the flat gravel land in the middle where the east wing will be built, with the Rivière des Prairies below" />
+      </div>
+      <figcaption>
+        <span class="c-txt">Aquablu today: the two finished towers and pool at left; the flat gravel in the middle is where the east wing goes.</span>
+        <span class="c-ref">The site today</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- ARTICLE BODY -->
+  <article class="body">
+    <div class="wrap narrow reveal">
+      <p class="first">Stand at the end of Rue Étienne-Lavoie and look at the Phase 3 land. On one side, two finished buildings full of your neighbours. On the other side, the last part of the plan. It's not a park and it's not a field — it's a flat patch of gravel behind a fence. The water pipes, the sewer and the power are already in the ground under it. Autoroute 13 runs right next to it. This isn't nature. It's a construction site that got put on pause.</p>
+
+      <p>It's easy to look at an empty lot and think of it as green space — to feel that leaving it alone is the kind thing to do for the environment. But there's nothing green about a gravel pad. Leave it alone and it doesn't turn into a forest. It just stays what it is now: the unfinished half of the project, waiting.</p>
+
+      <h2><span class="mono-kicker">What the land really is</span>It stays a construction site until it's finished.</h2>
+      <p>This lot won't fix itself. As long as the east wing isn't built, it stays a paused job site — flattened, gravelled, hooked up to everything, and just sitting there. That's not something anyone wants next to their home, and waiting doesn't make it any better. The only thing that turns a paused job site back into finished ground is finishing it.</p>
+
+      <div class="pullquote reveal">There's nothing green about a gravel pad. Leave it alone and it doesn't become a forest — it just stays the unfinished half of a construction site, waiting for the east wing.</div>
+
+      <h2><span class="mono-kicker">Where the real waste is</span>Everything's already here. Wasting it is the shame.</h2>
+      <p>The biggest cost of new housing isn't the building. It's everything around it — the big water and sewer lines, the wider roads, the new highway ramps, and all the extra driving that comes when houses are spread far apart. Every bit of that is already built here. The pipes are in. The highway is there. The buses, the schools and the stores that Phase 1 and Phase 2 use are all there too.</p>
+      <p>Leaving this lot as gravel doesn't save any of that. It just means the homes get built somewhere else — out on farmland or in the woods at the edge of town, where all of it has to be built from scratch. The real waste is putting all of that in the ground and then leaving half of it doing nothing behind a fence.</p>
+
+      <h2><span class="mono-kicker">What the experts say</span>This is what environmentalists ask for.</h2>
+      <p>This isn't some fringe idea. For years, the people who think hardest about land and cities have said the same thing: if you want to protect nature, build in the spots that are already hooked up — put more homes where the roads and pipes already are — instead of paving over more open land. Most of them agree on it.</p>
+      <p>And a lot of it comes down to roads. Building new roads sounds harmless, but it isn't. Add more road out at the edge of town and you don't fix traffic — you get more of it: more cars, more driving, more pollution, and it stays that way for good. A new subdivision out on farmland needs all those new roads. Homes next to a highway that's already there need none of them.</p>
+
+      <div class="pullquote reveal">Environmentalists aren't asking for more empty lots. They're asking for homes where the roads and pipes already are — and for the new roads into farmland to stop. Finishing the east wing does the first. Leaving it empty feeds the second.</div>
+
+      <p>That's the part worth thinking about. Homes near a highway and buses that already exist mean shorter trips and less pavement for each family. Houses spread out over farmland mean the opposite, one by one, for good. Building the east wing on land that's already tied into Autoroute 13 and all the services is exactly what these folks ask for. Leaving it as gravel while the town keeps building roads farther out is exactly what they warn against.</p>
+
+      <h2><span class="mono-kicker">What finishing brings</span>Finishing the east wing makes room for the rest.</h2>
+      <p>Here's the part that matters most to the people already living here: the east wing isn't just more homes. It's what finally gives the site enough room to be finished right. Building it is what makes space for the extra parking people have been asking for, and for the other shared things a half-built gravel lot just can't fit today.</p>
+      <p>The empty lot isn't doing nothing — it's the reason those things aren't here yet. Every year the east wing waits is another year the site stays a construction zone instead of the parking and shared spaces the plan was always meant to include.</p>
+
+      <h2><span class="mono-kicker">The simple version</span>It comes down to this: finish what you start.</h2>
+      <p>We bought this land in 2011. We put in the services, built two buildings, and handed them over to the people who live in them now. This last piece isn't wild land we're threatening — it's the unfinished corner of our own project, sitting as gravel between the homes we already built.</p>
+      <p>So when people ask why we keep pushing for Phase 3, the answer is simple: an empty lot doesn't get better on its own — it just stays gravel. The right thing to do — for the land, for everything already built into the ground, and for the neighbours who live right next to it — is to finish what we started. Building the east wing turns a gravel site into parking, shared spaces, and a place that's finally whole. That's really all there is to it.</p>
+
+      <div class="sign">
+        <span class="bar"></span>
+        <span>The partners of DDB13</span>
+      </div>
+
+      <div class="callout reveal">
+        <div>
+          <div class="k">Just want the facts?</div>
+          <h3>This is a personal note — not part of the official record.</h3>
+        </div>
+        <a href="index.html#standing" class="btn">See where Phase 3 stands →</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="colophon">
+        <div>
+          <a href="index.html" class="brand" style="font-size:1.15rem;">Domaine&nbsp;des&nbsp;Berges&nbsp;<span class="n">13</span></a>
+          <p>This page is maintained directly by the partners of DDB13 — an open record for the owners of Aquablu, kept current as Phase 3 moves.</p>
+        </div>
+        <nav class="foot-nav">
+          <a href="index.html">The Record</a>
+          <a href="thoughts.html">My Thoughts</a>
+          <a href="index.html#standing">Where We Stand</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="reflexions.html">Français</a>
+        </nav>
+      </div>
+      <div class="foot-meta">
+        <span>Record no. DDB13 / AQUABLU-2011</span>
+        <span>© 2025 Domaine des Berges 13 · Sainte-Dorothée, Laval&nbsp;QC</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('solid', window.scrollY > 20);
+    addEventListener('scroll', onScroll, { passive:true }); onScroll();
+
+    const burger = document.getElementById('burger'), mobile = document.getElementById('mobile');
+    burger.addEventListener('click', () => {
+      const open = mobile.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    }), { rootMargin:'0px 0px -60px 0px', threshold:.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
